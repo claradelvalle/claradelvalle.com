@@ -11,8 +11,6 @@ magic.main = (function (gg){
     let scene,
         camera,
         renderer,
-        planeGeometry,
-        planeMesh,
         axesHelper,
         controls;
 
@@ -24,18 +22,7 @@ magic.main = (function (gg){
      * Check hostname to verify Development Environment
      */    
     const developmentEnvironment = () => {
-        if (window.location.hostname == 'claradelvalle.com'){
-            return false;
-        }
-    }
-    /**
-     * Generates a mesh using the provided Geometry and FragmentShaderName
-     */
-    function renderPlaneMeshWithShaderMaterial(fragmentShaderName){
-        planeGeometry = new THREE.PlaneGeometry( 1, 1);
-        planeMesh = new THREE.Mesh( planeGeometry, shaderMaterial );
-        planeMesh.scale.set(2, 2, 2);
-        scene.add( planeMesh );
+        return window.location.host != 'claradelvalle.com';
     }
 
     /**
@@ -77,7 +64,6 @@ magic.main = (function (gg){
 
         window.addEventListener( 'resize', onWindowResize, false );
         window.addEventListener( 'click', generateCubeAtRandomPosition, false );
-        generateCubeAtRandomPosition();
      }
 
 
@@ -154,7 +140,7 @@ magic.main = (function (gg){
     function animate(nowMsec){
         requestAnimationFrame( animate );
 
-        if (developmentEnvironment){
+        if (developmentEnvironment()){
             stats.begin();
         }
         
@@ -162,7 +148,7 @@ magic.main = (function (gg){
 
         renderer.render( scene, camera );
 
-        if (developmentEnvironment){
+        if (developmentEnvironment()){
             stats.end();
         }
     }
@@ -172,7 +158,7 @@ magic.main = (function (gg){
      */
     initScene();
 
-    if (developmentEnvironment){
+    if (developmentEnvironment()){
         showStats();
         showAxesHelper();
     }

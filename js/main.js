@@ -60,6 +60,7 @@ magic.main = (function (gg){
 
         //controls.update() must be called after any manual changes to the camera's transform
         camera.position.set( 0, 10, 4);
+        controls.autoRotate = true;
         controls.update();
 
         window.addEventListener( 'resize', onWindowResize, false );

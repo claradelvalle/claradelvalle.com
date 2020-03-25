@@ -10,11 +10,12 @@ magic.main = (function (gg){
 
     let scene,
         camera,
+        meshes,
         renderer,
         axesHelper,
         controls;
 
-    const SCREEN_WIDTH = window.innerWidth,
+    let SCREEN_WIDTH = window.innerWidth,
         SCREEN_HEIGHT = window.innerHeight,
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
 
@@ -46,6 +47,7 @@ magic.main = (function (gg){
      * Sets basic 3D Scene Elements
      */
     function initScene(){
+        meshes = new Array();
         scene = new THREE.Scene();
         
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
@@ -64,7 +66,8 @@ magic.main = (function (gg){
         controls.update();
 
         window.addEventListener( 'resize', onWindowResize, false );
-        window.addEventListener( 'click', generateCubeAtRandomPosition, false );
+        // window.addEventListener( 'click', generateCubeAtRandomPosition, false );
+        window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
      }
 
 
@@ -72,26 +75,45 @@ magic.main = (function (gg){
      * Click Event Handler
      * Generates a cube on a random position
      */
-    function generateCubeAtRandomPosition(){
-        let cubeWidth = getRandomArbitrary(0,1),
-            cubeHeight = getRandomArbitrary(0,1);
-            geometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 1 ),
-            material = new THREE.MeshBasicMaterial( {color: getRandomColor()} ),
-            cubeMesh = new THREE.Mesh( geometry, material );
+    function generateMeshAtRandomPosition(){
+        let material = new THREE.MeshBasicMaterial( {color: getRandomColor()} ),
+            mesh,
+            geometry,
+            randomValue = getRandomInt(0, 1) ;
         
-        cubeMesh.position.set(getRandomArbitrary(-1,1), getRandomArbitrary(-2,2), getRandomArbitrary(-1,1));
+        if(randomValue == 0){
+            geometry = generateCubeGeometry();
+        }
+        else {
+            geometry = generateSphereGeometry();
+        }
 
-        scene.add( cubeMesh );
+        mesh = new THREE.Mesh( geometry, material );
+        mesh.position.set(getRandomArbitrary(-2,2), getRandomArbitrary(-2,2), getRandomArbitrary(-1,1));
+
+        meshes.push(mesh);
+        scene.add( mesh);
     }
 
     /**
-     * Generates a cube with given parameters
+     * Generates a cube
      */
-    function generateCube(){
-        let geometry = new THREE.BoxGeometry( 4.4, 1, 1 );
-        let material = new THREE.MeshBasicMaterial( {color: getRandomColor()} );
-        let cube = new THREE.Mesh( geometry, material );
-        return cube;
+    const generateCubeGeometry = () => {
+        let cubeWidth = getRandomArbitrary(0,1),
+        cubeHeight = getRandomArbitrary(0,1);
+        cubeGeometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 1 );
+
+        return cubeGeometry;
+    }
+
+    /**
+     * Generates an sphere
+     */
+    function generateSphereGeometry(){
+        let sphereRadius = getRandomArbitrary(0,1),
+            sphereGeometry = new THREE.SphereBufferGeometry( sphereRadius, 32, 32 );
+
+        return sphereGeometry;
     }
 
     /**
@@ -104,7 +126,7 @@ magic.main = (function (gg){
     /**
      * Returns a random number between min (inclusive) and max (exclusive)
      */
-    function getRandomArbitrary(min, max) {
+    const getRandomArbitrary = (min, max) => {
         return Math.random() * (max - min) + min;
     }
 
@@ -115,10 +137,18 @@ magic.main = (function (gg){
      * lower than max if max isn't an integer).
      * Using Math.round() will give you a non-uniform distribution!
      */
-    function getRandomInt(min, max) {
+    const getRandomInt = (min, max) => {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    /**
+     * Rotates all meshes
+     */
+    const rotateMeshes = () => {
+        meshes.forEach(function() {
+        });
     }
 
     /**
@@ -145,6 +175,8 @@ magic.main = (function (gg){
             stats.begin();
         }
         
+        // rotateMeshes();
+
         controls.update();
 
         renderer.render( scene, camera );

@@ -4,11 +4,11 @@
  * 2020
  */
 
-var magic = window.magic || {};
+let magic = window.magic || {};
 
 (function (){
 
-    var scene,
+    let scene,
         camera,
         meshes,
         colors,
@@ -74,10 +74,7 @@ var magic = window.magic || {};
             '255, 50, 200'
         ];
 
-        generateMeshAtRandomPosition();
-
         window.addEventListener( 'resize', onWindowResize, false );
-        // window.addEventListener( 'click', generateMeshAtRandomPosition, false );
         window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
      }
 
@@ -87,16 +84,26 @@ var magic = window.magic || {};
      * Generates a cube on a random position
      */
     function generateMeshAtRandomPosition(){
-        var material = new THREE.MeshBasicMaterial( {color: getRandomColor()} ),
+        let material = new THREE.MeshBasicMaterial( {color: getRandomColor()} ),
             mesh,
             geometry,
-            randomValue = getRandomInt(0, 1) ;
+            randomValue = getRandomInt(0, 3) ;
         
-        if(randomValue == 0){
-            geometry = generateCubeGeometry();
-        }
-        else {
-            geometry = generateSphereGeometry();
+        switch (randomValue) {
+            case 0:
+                geometry = generateCubeGeometry();
+                break;
+            case 1: 
+                geometry = generateSphereGeometry();
+                break;
+            case 2:
+                geometry = generateIcosahedronGeometry();
+                break;
+            case 3: 
+                geometry = generateTorusGeometry();
+                break;
+            default:
+                return;
         }
 
         mesh = new THREE.Mesh( geometry, material );
@@ -107,24 +114,43 @@ var magic = window.magic || {};
     }
 
     /**
-     * Generates a cube
+     * Generates a cube geometry
      */
-    function generateCubeGeometry() {
-        var cubeWidth = getRandomArbitrary(0,1),
+    const generateCubeGeometry = () => {
+        let cubeWidth = getRandomArbitrary(0,1),
         cubeHeight = getRandomArbitrary(0,1);
         cubeGeometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 1 );
-
         return cubeGeometry;
     }
 
     /**
-     * Generates an sphere
+     * Generates an sphere geometry
      */
-    function generateSphereGeometry(){
-        var sphereRadius = getRandomArbitrary(0,1),
+    const generateSphereGeometry = () => {
+        let sphereRadius = getRandomArbitrary(0,1),
             sphereGeometry = new THREE.SphereBufferGeometry( sphereRadius, 32, 32 );
-
         return sphereGeometry;
+    }
+
+    /**
+     * Generates an icosahedron geometry
+     */
+    const generateIcosahedronGeometry = () => {
+        let icosahedronRadius = getRandomArbitrary(0,1),
+            icosahedronGeometry = new THREE.IcosahedronGeometry(icosahedronRadius);
+        return icosahedronGeometry;
+    }
+
+    /**
+     * Generates a torus geometry
+     */
+    const generateTorusGeometry = () => {
+        let torusRadius = getRandomArbitrary(0, 1),
+            tube = getRandomArbitrary(0, 1),
+            radialSegments = 10,
+            tubularSegments = 30,
+            torusGeometry = new THREE.TorusGeometry(torusRadius, tube, radialSegments, tubularSegments);
+        return torusGeometry;
     }
 
     /**

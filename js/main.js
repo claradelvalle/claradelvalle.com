@@ -4,25 +4,25 @@
  * 2020
  */
 
-let magic = window.magic || {};
+var magic = window.magic || {};
 
-magic.main = (function (gg){
+(function (){
 
-    let scene,
+    var scene,
         camera,
         meshes,
+        colors,
         renderer,
         axesHelper,
         controls;
-
-    let SCREEN_WIDTH = window.innerWidth,
+        SCREEN_WIDTH = window.innerWidth,
         SCREEN_HEIGHT = window.innerHeight,
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
 
     /**
      * Check hostname to verify Development Environment
      */    
-    const developmentEnvironment = () => {
+    function developmentEnvironment() {
         return window.location.host != 'claradelvalle.com';
     }
 
@@ -48,25 +48,36 @@ magic.main = (function (gg){
      */
     function initScene(){
         meshes = new Array();
+        colors = new Array();
         scene = new THREE.Scene();
-        
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-
         renderer = new THREE.WebGLRenderer( );
         renderer.setPixelRatio( window.devicePixelRatio );
-        renderer.setClearColor( 0xFFFFFF, 1 );
+        renderer.setClearColor( 0xFFF0FF, 1 );
         renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
         document.body.appendChild( renderer.domElement );
-
         controls = new THREE.OrbitControls( camera, renderer.domElement );
-
         //controls.update() must be called after any manual changes to the camera's transform
         camera.position.set( 0, 10, 4);
         controls.autoRotate = true;
         controls.update();
 
+        colors = [
+            '0, 0, 0',
+            '255, 0, 0',
+            '0, 255, 0',
+            '0, 0, 255',
+            '255, 255, 0',
+            '255, 0, 255',
+            '50, 230, 255',
+            '0, 255, 255',
+            '255, 50, 200'
+        ];
+
+        generateMeshAtRandomPosition();
+
         window.addEventListener( 'resize', onWindowResize, false );
-        // window.addEventListener( 'click', generateCubeAtRandomPosition, false );
+        // window.addEventListener( 'click', generateMeshAtRandomPosition, false );
         window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
      }
 
@@ -76,7 +87,7 @@ magic.main = (function (gg){
      * Generates a cube on a random position
      */
     function generateMeshAtRandomPosition(){
-        let material = new THREE.MeshBasicMaterial( {color: getRandomColor()} ),
+        var material = new THREE.MeshBasicMaterial( {color: getRandomColor()} ),
             mesh,
             geometry,
             randomValue = getRandomInt(0, 1) ;
@@ -98,8 +109,8 @@ magic.main = (function (gg){
     /**
      * Generates a cube
      */
-    const generateCubeGeometry = () => {
-        let cubeWidth = getRandomArbitrary(0,1),
+    function generateCubeGeometry() {
+        var cubeWidth = getRandomArbitrary(0,1),
         cubeHeight = getRandomArbitrary(0,1);
         cubeGeometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 1 );
 
@@ -110,7 +121,7 @@ magic.main = (function (gg){
      * Generates an sphere
      */
     function generateSphereGeometry(){
-        let sphereRadius = getRandomArbitrary(0,1),
+        var sphereRadius = getRandomArbitrary(0,1),
             sphereGeometry = new THREE.SphereBufferGeometry( sphereRadius, 32, 32 );
 
         return sphereGeometry;
@@ -119,14 +130,16 @@ magic.main = (function (gg){
     /**
      * Returns random numbers for RGB color
      */
-    const getRandomColor = () => {
-        return "rgb(" + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ")";
+    function getRandomColor() {
+        // return "rgb(" + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ")";
+        let stringColor = "rgb(" + colors[getRandomInt(0, colors.length)] + ")";
+        return stringColor;
     }
 
     /**
      * Returns a random number between min (inclusive) and max (exclusive)
      */
-    const getRandomArbitrary = (min, max) => {
+    function getRandomArbitrary(min, max) {
         return Math.random() * (max - min) + min;
     }
 
@@ -137,18 +150,10 @@ magic.main = (function (gg){
      * lower than max if max isn't an integer).
      * Using Math.round() will give you a non-uniform distribution!
      */
-    const getRandomInt = (min, max) => {
+    function getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    /**
-     * Rotates all meshes
-     */
-    const rotateMeshes = () => {
-        meshes.forEach(function() {
-        });
     }
 
     /**

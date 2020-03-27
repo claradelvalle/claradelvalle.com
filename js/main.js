@@ -21,15 +21,42 @@ let magic = window.magic || {};
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
 
     const colors = [
-        '0, 0, 0',
-        '255, 0, 0',
-        '0, 255, 0',
-        '0, 0, 255',
-        '255, 255, 0',
-        '255, 0, 255',
-        '50, 230, 255',
-        '0, 255, 255',
-        '255, 50, 200'
+        {
+            'color':'0, 0, 0',
+            'name':'black'
+        },
+        {
+            'color':'255, 0, 0',
+            'name':'red'
+        },
+        {
+            'color':'0, 255, 0',
+            'name':'green'
+        },
+        {
+            'color':'0, 0, 255',
+            'name':'blue'
+        },
+        {
+            'color':'255, 255, 0',
+            'name':'yellow'
+        },
+        {
+            'color':'255, 0, 255',
+            'name':'purple'
+        },
+        {
+            'color':'50, 230, 255',
+            'name':'turquoise'
+        },
+        {
+            'color':'150, 75, 0',
+            'name':'brown'
+        },
+        {
+            'color':'255, 50, 200',
+            'name':'pink'
+        }
     ];
 
     /**
@@ -250,7 +277,9 @@ let magic = window.magic || {};
      */
     function getRandomColor() {
         // return "rgb(" + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ")";
-        let stringColor = "rgb(" + colors[getRandomInt(0, colors.length)] + ")";
+        let pos = getRandomInt(0, colors.length);
+        let stringColor = "rgb(" + colors[pos].color + ")";
+        console.log(pos);
         return stringColor;
     }
 

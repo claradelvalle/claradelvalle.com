@@ -11,13 +11,26 @@ let magic = window.magic || {};
     let scene,
         camera,
         meshes,
-        colors,
+        clock,
         renderer,
+        controls,
+        uniforms,
         axesHelper,
-        controls;
         SCREEN_WIDTH = window.innerWidth,
         SCREEN_HEIGHT = window.innerHeight,
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+
+    const colors = [
+        '0, 0, 0',
+        '255, 0, 0',
+        '0, 255, 0',
+        '0, 0, 255',
+        '255, 255, 0',
+        '255, 0, 255',
+        '50, 230, 255',
+        '0, 255, 255',
+        '255, 50, 200'
+    ];
 
     /**
      * Check hostname to verify Development Environment
@@ -44,12 +57,42 @@ let magic = window.magic || {};
     }
 
     /**
+     * Init all functions
+     */
+    function init(font) {
+        // Verifies if app is running on a mobile device
+        isMobile = false;
+
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            isMobile = true;
+        }
+
+        window.addEventListener( 'resize', onWindowResize, false );
+
+        setScene();
+
+        renderTextGeometry(font, 'Clara');
+        
+        // onWindowResize();
+        
+        if (developmentEnvironment()){
+            showStats();
+            showAxesHelper();
+        }
+        
+        window.addEventListener( 'resize', onWindowResize, false );
+        window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
+
+        update();
+    }
+
+    /**
      * Sets basic 3D Scene Elements
      */
-    function initScene(){
+    function setScene(){
         meshes = new Array();
-        colors = new Array();
         scene = new THREE.Scene();
+        clock = new THREE.Clock();
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
         renderer = new THREE.WebGLRenderer( );
         renderer.setPixelRatio( window.devicePixelRatio );
@@ -57,27 +100,76 @@ let magic = window.magic || {};
         renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
         document.body.appendChild( renderer.domElement );
         controls = new THREE.OrbitControls( camera, renderer.domElement );
-        //controls.update() must be called after any manual changes to the camera's transform
         camera.position.set( 0, 10, 4);
         controls.autoRotate = true;
         controls.update();
-
-        colors = [
-            '0, 0, 0',
-            '255, 0, 0',
-            '0, 255, 0',
-            '0, 0, 255',
-            '255, 255, 0',
-            '255, 0, 255',
-            '50, 230, 255',
-            '0, 255, 255',
-            '255, 50, 200'
-        ];
-
-        window.addEventListener( 'resize', onWindowResize, false );
-        window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
      }
 
+    /**
+      * Setup shader Material
+      * Init Uniforms
+     */
+     const setupShaderMaterial = () => {
+        let shaderMaterial;
+
+        uniforms = {
+            u_time: { type: "f", value: 1.0 },
+            u_resolution: { type: "v2", value: new THREE.Vector2() },
+            u_mouse: { type: "v2", value: new THREE.Vector2() }
+        };
+
+        uniforms.u_resolution.value.x = window.innerWidth;
+        uniforms.u_resolution.value.y = window.innerHeight;
+
+        shaderMaterial =   new THREE.ShaderMaterial( {
+            name: "Displacement",
+            uniforms: uniforms,
+            vertexShader: document.getElementById( 'vertexShader' ).textContent,
+            fragmentShader: document.getElementById( 'displacementFragmentShader' ).textContent
+        });
+
+        return shaderMaterial;
+    }
+     /**
+      * Loads the JSON font
+      * Create the text Mesh
+     */
+    function renderTextGeometry(font, text){
+        let letterWidth = 0,
+            letterMesh;
+
+        letterPosition = 0;
+
+        textMesh = new THREE.Group();
+
+        material = setupShaderMaterial();
+        
+        for(let i=0;i<text.length;i++){
+            geometry = new THREE.TextGeometry( text[i], {
+                font: font,
+                size: 1,
+                height: 0.25,
+                curveSegments: 15
+            });
+
+            geometry.center();
+
+            letterMesh = new THREE.Mesh( geometry, material );
+
+            letterMesh.position.x = 0.7*i;
+
+            textMesh.add( letterMesh)
+        }
+
+        textMesh.position.x = -1.5;
+        textMesh.position.y = 1;
+
+        if(isMobile){
+            textMesh.position.y = 3.5;
+        }
+
+        scene.add(textMesh);
+    }
 
     /**
      * Click Event Handler
@@ -199,8 +291,11 @@ let magic = window.magic || {};
     /**
      * Updates objects on each frame
      */
-    function animate(nowMsec){
-        requestAnimationFrame( animate );
+    function update(nowMsec){
+        requestAnimationFrame( update );
+
+        var delta = clock.getDelta();
+        uniforms.u_time.value += delta * 2;
 
         if (developmentEnvironment()){
             stats.begin();
@@ -218,15 +313,12 @@ let magic = window.magic || {};
     }
 
     /** 
+     * Load the JSON font and 
      * Init all functions
      */
-    initScene();
-
-    if (developmentEnvironment()){
-        showStats();
-        showAxesHelper();
-    }
-    
-    animate();
+    loader = new THREE.FontLoader();
+    loader.load('../fonts/gotham_black_regular.json', function(font){
+        init(font);
+    });
 
 }(magic));

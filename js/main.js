@@ -127,8 +127,8 @@ let magic = window.magic || {};
         renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
         document.body.appendChild( renderer.domElement );
         controls = new THREE.OrbitControls( camera, renderer.domElement );
-        camera.position.set( 0, 10, 4);
-        controls.autoRotate = true;
+        camera.position.set( 0, 1, 10);
+        // controls.autoRotate = true;
         controls.update();
      }
 
@@ -184,6 +184,8 @@ let magic = window.magic || {};
             letterMesh = new THREE.Mesh( geometry, material );
 
             letterMesh.position.x = 0.7*i;
+            // letterMesh.position.y = 0.3;
+
 
             textMesh.add( letterMesh)
         }
@@ -206,7 +208,7 @@ let magic = window.magic || {};
         let material = new THREE.MeshBasicMaterial( {color: getRandomColor()} ),
             mesh,
             geometry,
-            randomValue = getRandomInt(0, 3) ;
+            randomValue = getRandomInt(0, 3);
         
         switch (randomValue) {
             case 0:
@@ -237,8 +239,8 @@ let magic = window.magic || {};
      */
     const generateCubeGeometry = () => {
         let cubeWidth = getRandomArbitrary(0,1),
-        cubeHeight = getRandomArbitrary(0,1);
-        cubeGeometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 1 );
+            cubeHeight = getRandomArbitrary(0,1);
+            cubeGeometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 1 );
         return cubeGeometry;
     }
 
@@ -277,9 +279,8 @@ let magic = window.magic || {};
      */
     function getRandomColor() {
         // return "rgb(" + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ")";
-        let pos = getRandomInt(0, colors.length);
-        let stringColor = "rgb(" + colors[pos].color + ")";
-        console.log(pos);
+        let pos = getRandomInt(0, colors.length-1, true),
+            stringColor = "rgb(" + colors[pos].color + ")";
         return stringColor;
     }
 
@@ -297,9 +298,13 @@ let magic = window.magic || {};
      * lower than max if max isn't an integer).
      * Using Math.round() will give you a non-uniform distribution!
      */
-    function getRandomInt(min, max) {
+    function getRandomInt(min, max, showOnConsole) {
         min = Math.ceil(min);
         max = Math.floor(max);
+        // let randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+        
+        let preValue = Math.random() * (max - min + 1);
+        // let randomInt = Math.floor(preValue) + min;
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 

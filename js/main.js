@@ -126,10 +126,10 @@ let magic = window.magic || {};
         renderer.setClearColor( 0xFFF0FF, 1 );
         renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
         document.body.appendChild( renderer.domElement );
-        controls = new THREE.OrbitControls( camera, renderer.domElement );
+        // controls = new THREE.OrbitControls( camera, renderer.domElement );
         camera.position.set( 0, 1, 10);
         // controls.autoRotate = true;
-        controls.update();
+        // controls.update();
      }
 
     /**
@@ -337,7 +337,7 @@ let magic = window.magic || {};
         
         // rotateMeshes();
 
-        controls.update();
+        // controls.update();
 
         renderer.render( scene, camera );
 

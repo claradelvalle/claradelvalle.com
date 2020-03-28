@@ -13,9 +13,11 @@ let magic = window.magic || {};
         meshes,
         clock,
         renderer,
-        controls,
         uniforms,
         axesHelper,
+        currentMesh,
+        currentColorTextMesh,
+        gothamBlackRegularFont,
         SCREEN_WIDTH = window.innerWidth,
         SCREEN_HEIGHT = window.innerHeight,
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
@@ -62,10 +64,18 @@ let magic = window.magic || {};
     /**
      * Check hostname to verify Development Environment
      */    
-    function developmentEnvironment() {
-        return window.location.host != 'claradelvalle.com';
-    }
+    const developmentEnvironment = () => window.location.host != 'claradelvalle.com';
 
+    /**
+     * Checks if website is rendered on a mobile device
+     */
+    const isMobile = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    
+    /**
+     * Returns a random number between min (inclusive) and max (exclusive)
+     */
+    const getRandomArbitrary = (min, max) => Math.random() * (max - min) + min;
+    
     /**
      * Set up and show Javascript Performance Monitor
      */
@@ -87,29 +97,17 @@ let magic = window.magic || {};
      * Init all functions
      */
     function init(font) {
-        // Verifies if app is running on a mobile device
-        isMobile = false;
-
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-            isMobile = true;
-        }
-
-        window.addEventListener( 'resize', onWindowResize, false );
-
         setScene();
-
-        renderTextGeometry(font, 'Clara');
-        
-        // onWindowResize();
         
         if (developmentEnvironment()){
             showStats();
             showAxesHelper();
         }
-        
-        window.addEventListener( 'resize', onWindowResize, false );
-        window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
 
+        rednderTextMeshes();
+        
+        window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
+        generateMeshAtRandomPosition();
         update();
     }
 
@@ -120,16 +118,16 @@ let magic = window.magic || {};
         meshes = new Array();
         scene = new THREE.Scene();
         clock = new THREE.Clock();
+
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
+        camera.position.set( 0, 1, 10);
+        // camera.lookAt(0, 0, 0);
+
         renderer = new THREE.WebGLRenderer( );
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setClearColor( 0xFFF0FF, 1 );
         renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
         document.body.appendChild( renderer.domElement );
-        // controls = new THREE.OrbitControls( camera, renderer.domElement );
-        camera.position.set( 0, 1, 10);
-        // controls.autoRotate = true;
-        // controls.update();
      }
 
     /**
@@ -157,25 +155,33 @@ let magic = window.magic || {};
 
         return shaderMaterial;
     }
+
+    /**
+     * 
+     * @param {*} font 
+     * @param {*} text 
+     * @param {*} textPosition 
+     */
+    const rednderTextMeshes = () => {
+        renderTextMesh(gothamBlackRegularFont, 'Clara Del Valle', new THREE.Vector3( -2, 3.8, 0 ), material = setupShaderMaterial(), 'mainTitle');
+    }
      /**
       * Loads the JSON font
       * Create the text Mesh
-     */
-    function renderTextGeometry(font, text){
-        let letterWidth = 0,
-            letterMesh;
-
-        letterPosition = 0;
+      * @param THREE.Vector3 position
+      */
+    const renderTextMesh = (font, text, textPosition, material, meshName) => {
+        let letterMesh,
+            fontSize = 0.37,
+            letterSpacing = 0.3;
 
         textMesh = new THREE.Group();
-
-        material = setupShaderMaterial();
         
         for(let i=0;i<text.length;i++){
             geometry = new THREE.TextGeometry( text[i], {
                 font: font,
-                size: 1,
-                height: 0.25,
+                size: fontSize,
+                height: 0.2,
                 curveSegments: 15
             });
 
@@ -183,20 +189,15 @@ let magic = window.magic || {};
 
             letterMesh = new THREE.Mesh( geometry, material );
 
-            letterMesh.position.x = 0.7*i;
-            // letterMesh.position.y = 0.3;
-
+            letterMesh.position.x = letterSpacing*i;
+            letterMesh.position.y = 1;
 
             textMesh.add( letterMesh)
         }
 
-        textMesh.position.x = -1.5;
-        textMesh.position.y = 1;
-
-        if(isMobile){
-            textMesh.position.y = 3.5;
-        }
-
+        textMesh.name = meshName;
+        textMesh.position.set(textPosition.x, textPosition.y, textPosition.z);
+        scene.remove(scene.getObjectByName( 'colorName'));
         scene.add(textMesh);
     }
 
@@ -227,11 +228,15 @@ let magic = window.magic || {};
                 return;
         }
 
+        scene.remove(scene.getObjectByName( 'geometricMesh'));
+
         mesh = new THREE.Mesh( geometry, material );
+        mesh.name = "geometricMesh";
         mesh.position.set(getRandomArbitrary(-2,2), getRandomArbitrary(-2,2), getRandomArbitrary(-1,1));
 
         meshes.push(mesh);
         scene.add( mesh);
+        currentMesh = mesh.name;
     }
 
     /**
@@ -280,15 +285,15 @@ let magic = window.magic || {};
     function getRandomColor() {
         // return "rgb(" + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ")";
         let pos = getRandomInt(0, colors.length-1, true),
-            stringColor = "rgb(" + colors[pos].color + ")";
-        return stringColor;
-    }
+            stringColor = "rgb(" + colors[pos].color + ")",
+            colorName = colors[pos].name;
+        
+        currentColorTextMesh = colorName;
+        let material = new THREE.MeshBasicMaterial( {color: stringColor} );
 
-    /**
-     * Returns a random number between min (inclusive) and max (exclusive)
-     */
-    function getRandomArbitrary(min, max) {
-        return Math.random() * (max - min) + min;
+        renderTextMesh(gothamBlackRegularFont, colorName, new THREE.Vector3( -2, -3.5, 0 ), material, 'colorName');
+        
+        return stringColor;
     }
 
     /**
@@ -335,9 +340,7 @@ let magic = window.magic || {};
             stats.begin();
         }
         
-        // rotateMeshes();
-
-        // controls.update();
+        scene.getObjectByName( 'geometricMesh' ).rotation.x -= 0.01;
 
         renderer.render( scene, camera );
 
@@ -347,12 +350,12 @@ let magic = window.magic || {};
     }
 
     /** 
-     * Load the JSON font and 
-     * Init all functions
+     * Load the JSON font and Init all functions
      */
     loader = new THREE.FontLoader();
     loader.load('../fonts/gotham_black_regular.json', function(font){
-        init(font);
+        gothamBlackRegularFont = font;
+        init();
     });
 
 }(magic));

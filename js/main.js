@@ -104,7 +104,7 @@ let magic = window.magic || {};
             showAxesHelper();
         }
 
-        renderTextMesh(gothamBlackRegularFont, 'Clara Del Valle', new THREE.Vector3( -2, 3.8, 0 ), material = setupShaderMaterial(), 'mainTitle');
+        // renderTextMesh(gothamBlackRegularFont, 'Clara Del Valle', new THREE.Vector3( -2, 3.8, 0 ), material = setupShaderMaterial(), 'mainTitle');
         
         window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
         generateMeshAtRandomPosition();
@@ -164,6 +164,7 @@ let magic = window.magic || {};
      */
     const rednderTextMeshes = () => {
     }
+
      /**
       * Loads the JSON font
       * Create the text Mesh
@@ -333,7 +334,7 @@ let magic = window.magic || {};
         requestAnimationFrame( update );
 
         var delta = clock.getDelta();
-        uniforms.u_time.value += delta * 2;
+        // uniforms.u_time.value += delta * 2;
 
         if (developmentEnvironment()){
             stats.begin();

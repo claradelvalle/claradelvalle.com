@@ -1,20 +1,19 @@
 /* HEADER STYLES */
 
 header {
-	height: 5vh;
+	z-index: 2;
 	display: flex;
 	padding: 2vw 4vw;
 	align-items: center;
-	background-color: rgba(255, 0, 0, 0.2);
 
 	svg {
 		width: 8vw;
 	}
 
 	h1 {
-		font-size: 4vw;
-		margin-left: 10vw;
-		letter-spacing: 1.5vw;
+		font-size: 4.3vw;
+		margin-left: 12vw;
+		letter-spacing: 1.7vw;
 		font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 	}
 }

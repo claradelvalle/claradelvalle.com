@@ -55,9 +55,14 @@ table {
 }
 
 /* GENERAL STYLES */
+canvas,
+header {
+  position: absolute;
+}
+
 /* HEADER STYLES */
 header {
-  height: 5vh;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,7 +70,6 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(255, 0, 0, 0.2);
 }
 
 header svg {
@@ -73,9 +77,9 @@ header svg {
 }
 
 header h1 {
-  font-size: 4vw;
-  margin-left: 10vw;
-  letter-spacing: 1.5vw;
+  font-size: 4.3vw;
+  margin-left: 12vw;
+  letter-spacing: 1.7vw;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 

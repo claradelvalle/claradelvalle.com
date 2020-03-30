@@ -1,5 +1,10 @@
 /* HEADER STYLES */
 
 header {
-	background-color: red;
+	height: 8vh;
+	background-color: rgba(255, 0, 0, 0.2);
+
+	svg {
+		width: 10vw;
+	}
 }

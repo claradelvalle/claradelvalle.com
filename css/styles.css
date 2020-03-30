@@ -57,12 +57,26 @@ table {
 /* GENERAL STYLES */
 /* HEADER STYLES */
 header {
-  height: 8vh;
+  height: 5vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2vw 4vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: rgba(255, 0, 0, 0.2);
 }
 
 header svg {
-  width: 10vw;
+  width: 8vw;
+}
+
+header h1 {
+  font-size: 4vw;
+  margin-left: 10vw;
+  letter-spacing: 3vw;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 /* HEADER STYLES */

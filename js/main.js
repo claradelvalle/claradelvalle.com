@@ -79,7 +79,7 @@ let magic = window.magic || {};
     /**
      * Set up and show Javascript Performance Monitor
      */
-    function showStats(){
+    const showStats = () => {
         stats = new Stats();
         stats.showPanel( 0 ); // 0: fps, 1: ms, 2: mb, 3+: custom
         document.body.appendChild( stats.dom );
@@ -104,7 +104,7 @@ let magic = window.magic || {};
             showAxesHelper();
         }
 
-        rednderTextMeshes();
+        renderTextMesh(gothamBlackRegularFont, 'Clara Del Valle', new THREE.Vector3( -2, 3.8, 0 ), material = setupShaderMaterial(), 'mainTitle');
         
         window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
         generateMeshAtRandomPosition();
@@ -163,7 +163,6 @@ let magic = window.magic || {};
      * @param {*} textPosition 
      */
     const rednderTextMeshes = () => {
-        renderTextMesh(gothamBlackRegularFont, 'Clara Del Valle', new THREE.Vector3( -2, 3.8, 0 ), material = setupShaderMaterial(), 'mainTitle');
     }
      /**
       * Loads the JSON font

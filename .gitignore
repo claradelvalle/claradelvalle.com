@@ -1,3 +1,14 @@
+# Junk Files
+*.DS_Store
+[Tt]humbs.db
+
+# Sass Cache files
+**/.sass-cache
+**/.sass-cache/*
+
+# Visual Studio code folder with settings.json file
+.vscode
+
 # Logs
 logs
 *.log

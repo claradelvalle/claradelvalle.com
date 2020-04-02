@@ -12,11 +12,11 @@ let magic = window.magic || {};
         camera,
         meshes,
         clock,
-        texture,
         renderer,
         uniforms,
         axesHelper,
         currentMesh,
+        rainbowMesh,
         currentColorTextMesh,
         gothamBlackRegularFont,
         SCREEN_WIDTH = window.innerWidth,
@@ -107,23 +107,9 @@ let magic = window.magic || {};
 
         // renderTextMesh(gothamBlackRegularFont, 'Clara Del Valle', new THREE.Vector3( -2, 3.8, 0 ), material = setupShaderMaterial(), 'mainTitle');
 
-        let geometry = new THREE.SphereGeometry( 1.4, 32, 32, 0, 1, 3, 3.1 );
+        renderRainbow();
 
-        texture = new THREE.TextureLoader().load( 'textures/rainbow.png', function ( texture ) {
-
-            // var geometry = new THREE.SphereGeometry( 200, 20, 20 );
-    
-            var material = new THREE.MeshBasicMaterial( { map: texture} );
-            var mesh = new THREE.Mesh( geometry, material );
-            mesh.rotation.z = Math.PI / 2;
-            // mesh.rotation.x = -Math.PI / 3;
-            mesh.position.set(0, 3.3, 0);
-
-            scene.add( mesh );
-    
-            } );
-
-        let material = setupShaderMaterial();
+        // let material = setupShaderMaterial();
         
         window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
         generateMeshAtRandomPosition();
@@ -159,7 +145,7 @@ let magic = window.magic || {};
         uniforms = {
             u_time: { value: 1.0 },
             u_resolution: { type: "v2", value: new THREE.Vector2() },
-            map: { value: texture }
+            // map: { value: texture }
         };
 
         uniforms.u_resolution.value.x = window.innerWidth;
@@ -183,6 +169,33 @@ let magic = window.magic || {};
      * @param {*} textPosition 
      */
     const rednderTextMeshes = () => {
+    }
+
+    /**
+     * 
+     * @param {*} font 
+     * @param {*} text 
+     * @param {*} textPosition 
+     * @param {*} material 
+     * @param {*} meshName 
+     */
+    const renderRainbow = () => {
+        // let geometry = new THREE.SphereGeometry( 1.4, 32, 32, 0, 1, 3, 3.1 ),
+        let geometry = new THREE.SphereGeometry( 1, 32, 32),
+            texture = new THREE.TextureLoader().load( 'textures/rainbow.png', function ( texture ) {
+                let material = new THREE.MeshBasicMaterial( {
+                    map: texture,
+                    side: THREE.DoubleSide
+                });
+                
+                rainbowMesh = new THREE.Mesh( geometry, material );
+                // rainbowMesh.rotation.z = Math.PI / 2;
+                rainbowMesh.position.set(0, 4, 0);
+
+                scene.add( rainbowMesh );
+        
+            }
+        );
     }
 
      /**
@@ -361,6 +374,8 @@ let magic = window.magic || {};
         }
         
         scene.getObjectByName( 'geometricMesh' ).rotation.x -= 0.01;
+        rainbowMesh.rotation.x -= 0.01;
+        rainbowMesh.rotation.y -= 0.01;
 
         renderer.render( scene, camera );
 

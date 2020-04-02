@@ -12,6 +12,7 @@ let magic = window.magic || {};
         camera,
         meshes,
         clock,
+        texture,
         renderer,
         uniforms,
         axesHelper,
@@ -105,6 +106,24 @@ let magic = window.magic || {};
         }
 
         // renderTextMesh(gothamBlackRegularFont, 'Clara Del Valle', new THREE.Vector3( -2, 3.8, 0 ), material = setupShaderMaterial(), 'mainTitle');
+
+        let geometry = new THREE.SphereGeometry( 1.4, 32, 32, 0, 1, 3, 3.1 );
+
+        texture = new THREE.TextureLoader().load( 'textures/rainbow.png', function ( texture ) {
+
+            // var geometry = new THREE.SphereGeometry( 200, 20, 20 );
+    
+            var material = new THREE.MeshBasicMaterial( { map: texture} );
+            var mesh = new THREE.Mesh( geometry, material );
+            mesh.rotation.z = Math.PI / 2;
+            // mesh.rotation.x = -Math.PI / 3;
+            mesh.position.set(0, 3.3, 0);
+
+            scene.add( mesh );
+    
+            } );
+
+        let material = setupShaderMaterial();
         
         window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
         generateMeshAtRandomPosition();
@@ -138,19 +157,20 @@ let magic = window.magic || {};
         let shaderMaterial;
 
         uniforms = {
-            u_time: { type: "f", value: 1.0 },
+            u_time: { value: 1.0 },
             u_resolution: { type: "v2", value: new THREE.Vector2() },
-            u_mouse: { type: "v2", value: new THREE.Vector2() }
+            map: { value: texture }
         };
 
         uniforms.u_resolution.value.x = window.innerWidth;
         uniforms.u_resolution.value.y = window.innerHeight;
 
         shaderMaterial =   new THREE.ShaderMaterial( {
-            name: "Displacement",
+            name: "rainbow",
             uniforms: uniforms,
             vertexShader: document.getElementById( 'vertexShader' ).textContent,
-            fragmentShader: document.getElementById( 'displacementFragmentShader' ).textContent
+            fragmentShader: document.getElementById( 'rainbow' ).textContent,
+            defines : { USE_MAP: true }
         });
 
         return shaderMaterial;

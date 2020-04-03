@@ -22,11 +22,16 @@ let magic = window.magic || {};
         currentMesh,
         rainbowMesh,
         currentColorTextMesh,
+        rainbowTextureMaterial,
         gothamBlackRegularFont,
         isSphereReadyForRotation,
         SCREEN_WIDTH = window.innerWidth,
         SCREEN_HEIGHT = window.innerHeight,
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+
+    const materials = [
+
+    ];
 
     const colors = [
         {
@@ -112,12 +117,12 @@ let magic = window.magic || {};
 
         // renderTextMesh(gothamBlackRegularFont, 'Clara Del Valle', new THREE.Vector3( -2, 3.8, 0 ), material = setupShaderMaterial(), 'mainTitle');
 
-        renderRainbow();
+        getRainbowMaterial();
 
         // let material = setupShaderMaterial();
         
-        window.addEventListener( 'touchstart', generateMeshAtRandomPosition, false );
-        generateMeshAtRandomPosition();
+        window.addEventListener( 'touchstart', renderElement, false );
+        renderElement();
         update();
     }
 
@@ -179,16 +184,11 @@ let magic = window.magic || {};
     /**
      * Renders a Sphere with a rainbow texture image
      */
-    const renderRainbow = () => {
-        let geometry = new THREE.SphereGeometry( 1, 32, 32);
-
+    const getRainbowMaterial = () => {
         loadTexture('textures/rainbow.png').then(texture => {
-            let material = new THREE.MeshBasicMaterial({ map: texture });
-            rainbowMesh = new THREE.Mesh(geometry, material);
-            rainbowMesh.position.set(0, 4, 0);
-            scene.add(rainbowMesh);
-            isSphereReadyForRotation = true;
+            rainbowTextureMaterial =  new THREE.MeshBasicMaterial({ map: texture });
         })
+        return rainbowTextureMaterial;
     }
 
      /**
@@ -230,9 +230,9 @@ let magic = window.magic || {};
 
     /**
      * Click Event Handler
-     * Generates a cube on a random position
+     * renders a mesh with randomized geometry, material and color
      */
-    const generateMeshAtRandomPosition = () => {
+    const renderElement = () => {
         let material = new THREE.MeshBasicMaterial( {color: getRandomColor()} ),
             mesh,
             geometry,
@@ -240,16 +240,17 @@ let magic = window.magic || {};
         
         switch (randomValue) {
             case 0:
-                geometry = generateCubeGeometry();
+                geometry = renderCubeGeometry();
                 break;
-            case 1: 
-                geometry = generateSphereGeometry();
+            case 1:
+                geometry = renderSphereGeometry();
+                material = getRainbowMaterial();
                 break;
             case 2:
-                geometry = generateIcosahedronGeometry();
+                geometry = renderIcosahedronGeometry();
                 break;
             case 3: 
-                geometry = generateTorusGeometry();
+                geometry = renderTorusGeometry();
                 break;
             default:
                 return;
@@ -259,7 +260,7 @@ let magic = window.magic || {};
 
         mesh = new THREE.Mesh( geometry, material );
         mesh.name = "geometricMesh";
-        mesh.position.set(getRandomArbitrary(-2,2), getRandomArbitrary(-2,2), getRandomArbitrary(-1,1));
+        mesh.position.set(0, 2.2, 0);
 
         meshes.push(mesh);
         scene.add( mesh);
@@ -267,37 +268,37 @@ let magic = window.magic || {};
     }
 
     /**
-     * Generates a cube geometry
+     * renders a cube geometry
      */
-    const generateCubeGeometry = () => {
-        let cubeWidth = getRandomArbitrary(0,1),
-            cubeHeight = getRandomArbitrary(0,1),
+    const renderCubeGeometry = () => {
+        let cubeWidth = 2,
+            cubeHeight = 2,
             cubeGeometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 1 );
         return cubeGeometry;
     }
 
     /**
-     * Generates an sphere geometry
+     * renders a sphere geometry
      */
-    const generateSphereGeometry = () => {
-        let sphereRadius = getRandomArbitrary(0,1),
+    const renderSphereGeometry = () => {
+        let sphereRadius = 1.7,
             sphereGeometry = new THREE.SphereBufferGeometry( sphereRadius, 32, 32 );
         return sphereGeometry;
     }
 
     /**
-     * Generates an icosahedron geometry
+     * renders an icosahedron geometry
      */
-    const generateIcosahedronGeometry = () => {
+    const renderIcosahedronGeometry = () => {
         let icosahedronRadius = getRandomArbitrary(0,1),
             icosahedronGeometry = new THREE.IcosahedronGeometry(icosahedronRadius);
         return icosahedronGeometry;
     }
 
     /**
-     * Generates a torus geometry
+     * renders a torus geometry
      */
-    const generateTorusGeometry = () => {
+    const renderTorusGeometry = () => {
         let torusRadius = getRandomArbitrary(0, 1),
             tube = getRandomArbitrary(0, 1),
             radialSegments = 10,

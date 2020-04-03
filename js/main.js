@@ -8,10 +8,14 @@ let magic = window.magic || {};
 
 (function (){
 
+    'use strict';
+
     let scene,
-        camera,
-        meshes,
         clock,
+        stats,
+        camera,
+        loader,
+        meshes,
         renderer,
         uniforms,
         axesHelper,
@@ -19,6 +23,7 @@ let magic = window.magic || {};
         rainbowMesh,
         currentColorTextMesh,
         gothamBlackRegularFont,
+        isSphereReadyForRotation,
         SCREEN_WIDTH = window.innerWidth,
         SCREEN_HEIGHT = window.innerHeight,
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
@@ -89,7 +94,7 @@ let magic = window.magic || {};
     /**
      * Show Axes Helpers for 3D
      */
-    function showAxesHelper(){
+    const showAxesHelper = () => {
         axesHelper = new THREE.AxesHelper( 5 );
         scene.add( axesHelper );
     }
@@ -119,7 +124,7 @@ let magic = window.magic || {};
     /**
      * Sets basic 3D Scene Elements
      */
-    function setScene(){
+    const setScene = () => {
         meshes = new Array();
         scene = new THREE.Scene();
         clock = new THREE.Clock();
@@ -163,39 +168,27 @@ let magic = window.magic || {};
     }
 
     /**
-     * 
-     * @param {*} font 
-     * @param {*} text 
-     * @param {*} textPosition 
+     * Loads a texture URL and returns a promise
      */
-    const rednderTextMeshes = () => {
+    const loadTexture = (url) => {
+        return new Promise(resolve => {
+            new THREE.TextureLoader().load(url, resolve)
+        })
     }
 
     /**
-     * 
-     * @param {*} font 
-     * @param {*} text 
-     * @param {*} textPosition 
-     * @param {*} material 
-     * @param {*} meshName 
+     * Renders a Sphere with a rainbow texture image
      */
     const renderRainbow = () => {
-        // let geometry = new THREE.SphereGeometry( 1.4, 32, 32, 0, 1, 3, 3.1 ),
-        let geometry = new THREE.SphereGeometry( 1, 32, 32),
-            texture = new THREE.TextureLoader().load( 'textures/rainbow.png', function ( texture ) {
-                let material = new THREE.MeshBasicMaterial( {
-                    map: texture,
-                    side: THREE.DoubleSide
-                });
-                
-                rainbowMesh = new THREE.Mesh( geometry, material );
-                // rainbowMesh.rotation.z = Math.PI / 2;
-                rainbowMesh.position.set(0, 4, 0);
+        let geometry = new THREE.SphereGeometry( 1, 32, 32);
 
-                scene.add( rainbowMesh );
-        
-            }
-        );
+        loadTexture('textures/rainbow.png').then(texture => {
+            let material = new THREE.MeshBasicMaterial({ map: texture });
+            rainbowMesh = new THREE.Mesh(geometry, material);
+            rainbowMesh.position.set(0, 4, 0);
+            scene.add(rainbowMesh);
+            isSphereReadyForRotation = true;
+        })
     }
 
      /**
@@ -205,10 +198,11 @@ let magic = window.magic || {};
       */
     const renderTextMesh = (font, text, textPosition, material, meshName) => {
         let letterMesh,
+            geometry,
             fontSize = 0.37,
             letterSpacing = 0.3;
 
-        textMesh = new THREE.Group();
+        let textMesh = new THREE.Group();
         
         for(let i=0;i<text.length;i++){
             geometry = new THREE.TextGeometry( text[i], {
@@ -238,7 +232,7 @@ let magic = window.magic || {};
      * Click Event Handler
      * Generates a cube on a random position
      */
-    function generateMeshAtRandomPosition(){
+    const generateMeshAtRandomPosition = () => {
         let material = new THREE.MeshBasicMaterial( {color: getRandomColor()} ),
             mesh,
             geometry,
@@ -277,7 +271,7 @@ let magic = window.magic || {};
      */
     const generateCubeGeometry = () => {
         let cubeWidth = getRandomArbitrary(0,1),
-            cubeHeight = getRandomArbitrary(0,1);
+            cubeHeight = getRandomArbitrary(0,1),
             cubeGeometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 1 );
         return cubeGeometry;
     }
@@ -374,9 +368,12 @@ let magic = window.magic || {};
         }
         
         scene.getObjectByName( 'geometricMesh' ).rotation.x -= 0.01;
-        rainbowMesh.rotation.x -= 0.01;
-        rainbowMesh.rotation.y -= 0.01;
 
+        if(isSphereReadyForRotation) {
+            rainbowMesh.rotation.x -= 0.01;
+            rainbowMesh.rotation.y -= 0.01;
+        }
+        
         renderer.render( scene, camera );
 
         if (developmentEnvironment()){

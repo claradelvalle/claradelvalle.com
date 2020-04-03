@@ -290,7 +290,7 @@ let magic = window.magic || {};
      * renders an icosahedron geometry
      */
     const renderIcosahedronGeometry = () => {
-        let icosahedronRadius = getRandomArbitrary(0,1),
+        let icosahedronRadius = 1.5,
             icosahedronGeometry = new THREE.IcosahedronGeometry(icosahedronRadius);
         return icosahedronGeometry;
     }
@@ -299,10 +299,10 @@ let magic = window.magic || {};
      * renders a torus geometry
      */
     const renderTorusGeometry = () => {
-        let torusRadius = getRandomArbitrary(0, 1),
-            tube = getRandomArbitrary(0, 1),
+        let torusRadius = 1.4,
+            tube = 0.4,
             radialSegments = 10,
-            tubularSegments = 30,
+            tubularSegments = 20,
             torusGeometry = new THREE.TorusGeometry(torusRadius, tube, radialSegments, tubularSegments);
         return torusGeometry;
     }

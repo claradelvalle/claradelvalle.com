@@ -102,7 +102,7 @@ let magic = window.magic || {};
     /**
      * Init all functions
      */
-    function init(font) {
+    const init = (font) => {
         setScene();
         
         if (developmentEnvironment()){
@@ -309,7 +309,7 @@ let magic = window.magic || {};
     /**
      * Returns random numbers for RGB color
      */
-    function getRandomColor() {
+    const getRandomColor = () => {
         // return "rgb(" + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ")";
         let pos = getRandomInt(0, colors.length-1, true),
             stringColor = "rgb(" + colors[pos].color + ")",

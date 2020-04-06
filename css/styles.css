@@ -56,7 +56,8 @@ table {
 
 /* GENERAL STYLES */
 canvas,
-header {
+header,
+footer {
   position: absolute;
 }
 
@@ -91,6 +92,21 @@ header .rainbow {
   /* for webkit browsers Chrome and Safari */
   background-image: -webkit-gradient(linear, left top, right top, color-stop(0, red), color-stop(0.15, orange), color-stop(0.3, yellow), color-stop(0.45, green), color-stop(0.65, blue), color-stop(0.8, indigo), color-stop(1, violet));
   -webkit-background-clip: text;
+}
+
+/* HEADER STYLES */
+footer {
+  bottom: 0;
+  z-index: 2;
+  padding: 2vw 3vw;
+}
+
+footer h2 {
+  font-size: 7vw;
+  text-align: center;
+  letter-spacing: 1.9vw;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
 /* HEADER STYLES */

@@ -16,6 +16,7 @@ let magic = window.magic || {};
         camera,
         loader,
         meshes,
+        controls,
         renderer,
         uniforms,
         axesHelper,
@@ -115,11 +116,44 @@ let magic = window.magic || {};
             showAxesHelper();
         }
 
+        //------------------------------------------------------------------------
+        let shaderTexture = loadTexture('textures/rainbow.png');
+
+            
+        // use "this." to create global object
+        let customUniforms = {
+            texture: 	{ type: "t", value: shaderTexture },
+            alpha: 		{ type: "f", value: 1.0 },
+            u_resolution: { type: "v2", value: new THREE.Vector2() }
+        };
+        
+        // shaderTexture.wrapS = shaderTexture.wrapT = THREE.RepeatWrapping; 
+
+        customUniforms.u_resolution.value.x = window.innerWidth;
+        customUniforms.u_resolution.value.y = window.innerHeight;
+
+        // create custom material from the shader code above
+        //   that is within specially labeled script tags
+        var customMaterial = new THREE.ShaderMaterial( 
+        {
+            uniforms: customUniforms,
+            vertexShader:   document.getElementById( 'vertexShader'  ).textContent,
+            fragmentShader: document.getElementById( 'fragmentShader' ).textContent
+        });
+
+        customMaterial.side = THREE.DoubleSide;
+
+        // apply the material to a surface
+        var flatGeometry = new THREE.PlaneGeometry( 4, 4);
+        var surface = new THREE.Mesh( flatGeometry, customMaterial );
+        scene.add( surface );
+        //------------------------------------------------------------------------
+        let shaderMaterial = setupShaderMaterial(),
+            sphereRadius = 1.7,
+            sphereGeometry = new THREE.SphereBufferGeometry( sphereRadius, 32, 32 ),
+            sphereMesh = new THREE.Mesh(sphereGeometry, shaderMaterial);
+        // scene.add(sphereMesh);
         // renderTextMesh(gothamBlackRegularFont, 'Clara Del Valle', new THREE.Vector3( -2, 3.8, 0 ), material = setupShaderMaterial(), 'mainTitle');
-
-        getRainbowMaterial();
-
-        // let material = setupShaderMaterial();
         
         window.addEventListener( 'touchstart', renderElement, false );
         renderElement();
@@ -137,12 +171,14 @@ let magic = window.magic || {};
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
         camera.position.set( 0, 1, 10);
         // camera.lookAt(0, 0, 0);
-
+        
         renderer = new THREE.WebGLRenderer( );
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setClearColor( 0xFFF0FF, 1 );
         renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
         document.body.appendChild( renderer.domElement );
+
+        // controls = new THREE.OrbitControls( camera, renderer.domElement );
      }
 
     /**
@@ -155,7 +191,6 @@ let magic = window.magic || {};
         uniforms = {
             u_time: { value: 1.0 },
             u_resolution: { type: "v2", value: new THREE.Vector2() },
-            // map: { value: texture }
         };
 
         uniforms.u_resolution.value.x = window.innerWidth;
@@ -165,8 +200,7 @@ let magic = window.magic || {};
             name: "rainbow",
             uniforms: uniforms,
             vertexShader: document.getElementById( 'vertexShader' ).textContent,
-            fragmentShader: document.getElementById( 'rainbow' ).textContent,
-            defines : { USE_MAP: true }
+            fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
         });
 
         return shaderMaterial;
@@ -194,7 +228,7 @@ let magic = window.magic || {};
      /**
       * Loads the JSON font
       * Create the text Mesh
-      * @param THREE.Vector3 position
+      * @param THREE.Vector3 tectPposition
       */
     const renderTextMesh = (font, text, textPosition, material, meshName) => {
         let letterMesh,
@@ -224,6 +258,8 @@ let magic = window.magic || {};
 
         textMesh.name = meshName;
         textMesh.position.set(textPosition.x, textPosition.y, textPosition.z);
+        textMesh.rotation.x = 0.07;
+
         scene.remove(scene.getObjectByName( 'colorName'));
         scene.add(textMesh);
     }

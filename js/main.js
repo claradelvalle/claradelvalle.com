@@ -116,45 +116,6 @@ let magic = window.magic || {};
             showAxesHelper();
         }
 
-        //------------------------------------------------------------------------
-        let shaderTexture = loadTexture('textures/rainbow.png');
-
-            
-        // use "this." to create global object
-        let customUniforms = {
-            texture: 	{ type: "t", value: shaderTexture },
-            alpha: 		{ type: "f", value: 1.0 },
-            u_resolution: { type: "v2", value: new THREE.Vector2() }
-        };
-        
-        // shaderTexture.wrapS = shaderTexture.wrapT = THREE.RepeatWrapping; 
-
-        customUniforms.u_resolution.value.x = window.innerWidth;
-        customUniforms.u_resolution.value.y = window.innerHeight;
-
-        // create custom material from the shader code above
-        //   that is within specially labeled script tags
-        var customMaterial = new THREE.ShaderMaterial( 
-        {
-            uniforms: customUniforms,
-            vertexShader:   document.getElementById( 'vertexShader'  ).textContent,
-            fragmentShader: document.getElementById( 'fragmentShader' ).textContent
-        });
-
-        customMaterial.side = THREE.DoubleSide;
-
-        // apply the material to a surface
-        var flatGeometry = new THREE.PlaneGeometry( 4, 4);
-        var surface = new THREE.Mesh( flatGeometry, customMaterial );
-        scene.add( surface );
-        //------------------------------------------------------------------------
-        let shaderMaterial = setupShaderMaterial(),
-            sphereRadius = 1.7,
-            sphereGeometry = new THREE.SphereBufferGeometry( sphereRadius, 32, 32 ),
-            sphereMesh = new THREE.Mesh(sphereGeometry, shaderMaterial);
-        // scene.add(sphereMesh);
-        // renderTextMesh(gothamBlackRegularFont, 'Clara Del Valle', new THREE.Vector3( -2, 3.8, 0 ), material = setupShaderMaterial(), 'mainTitle');
-        
         window.addEventListener( 'touchstart', renderElement, false );
         renderElement();
         update();

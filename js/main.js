@@ -311,17 +311,11 @@ let magic = window.magic || {};
         // return "rgb(" + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ")";
         let pos = getRandomInt(0, colors.length-1, true),
             stringColor = "rgb(" + colors[pos].color + ")",
-            colorName = colors[pos].name,
-            h2Element = document.getElementsByTagName('h2')[0];
-        
-        h2Element.innerText = colorName;
-        h2Element.classList = '';
-        h2Element.classList.add(colorName);
-        // currentColorTextMesh = colorName;
+            colorName = colors[pos].name;
+  
+        addColorName(colorName);
         let material = new THREE.MeshBasicMaterial( {color: stringColor} );
 
-        // renderTextMesh(gothamBlackRegularFont, colorName, new THREE.Vector3( -2, -3.5, 0 ), material, 'colorName');
-        
         return stringColor;
     }
 
@@ -340,6 +334,18 @@ let magic = window.magic || {};
         let preValue = Math.random() * (max - min + 1);
         // let randomInt = Math.floor(preValue) + min;
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    /**
+     * Adds color name to h2.innerText
+     * and adds the corresponding color class name
+     */
+    const addColorName = (colorName) => {
+        let h2Element = document.getElementsByTagName('h2')[0];
+        
+        h2Element.innerText = colorName;
+        h2Element.classList = '';
+        h2Element.classList.add(colorName);
     }
 
     /**

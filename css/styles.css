@@ -108,6 +108,7 @@ footer h2 {
   letter-spacing: 2.4vw;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  text-shadow: 3px  3px 0 #000, -1px -1px 0 #000,   1px -1px 0 #000, -1px  1px 0 #000, 1px  1px 0 #000;
 }
 
 footer h2.green {

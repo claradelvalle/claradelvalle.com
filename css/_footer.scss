@@ -6,10 +6,46 @@ footer {
 	padding: 2vw 3vw;
 
 	h2 {
-		font-size: 7vw;
+		font-size: 9vw;
 		text-align: center;
 		letter-spacing: 1.9vw;
 		font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 		font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+
+		&.green {
+			color: #00FF00;
+		}
+
+		&.black{
+			color: #000000;
+		}
+
+		&.red{
+			color: #FF0000;
+		}
+
+		&.blue{
+			color: #0000FF;
+		}
+
+		&.yellow{
+			color: #FFFF00;
+		}
+
+		&.purple{
+			color: #FF00FF;
+		}
+
+		&.turquoise {
+			color: #32e7ff;
+		}
+
+		&.brown {
+			color: #964b00;
+		}
+
+		&.pink {
+			color: #ff32c8;
+		}
 	}
 }

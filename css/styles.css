@@ -102,9 +102,10 @@ footer {
 }
 
 footer h2 {
-  font-size: 9vw;
+  font-size: 14vw;
   text-align: center;
-  letter-spacing: 1.9vw;
+  font-weight: bold;
+  letter-spacing: 2.4vw;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 }

@@ -315,6 +315,7 @@ let magic = window.magic || {};
             h2Element = document.getElementsByTagName('h2')[0];
         
         h2Element.innerText = colorName;
+        h2Element.classList = '';
         h2Element.classList.add(colorName);
         // currentColorTextMesh = colorName;
         let material = new THREE.MeshBasicMaterial( {color: stringColor} );

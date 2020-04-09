@@ -44,14 +44,14 @@
         },
         {
             "name": "Grid",
-            "geometry": "IcosahedronGeometry",
+            "geometry": "IcosahedronBufferGeometry",
             "params": [
                 1.5
             ],
             "textureUrl": "/textures/pattern01.jpg"
         },
         {
-            "name": "Pattern",
+            "name": "Pattern Knot",
             "geometry": "TorusKnotBufferGeometry",
             "params": [
                 1, 0.3, 100, 16

@@ -158,8 +158,8 @@ let magic = window.magic || {};
             case "BoxGeometry":
                 geometry = new THREE.BoxGeometry( params[0], params[1], params[2]);
                 break;
-            case "IcosahedronGeometry": 
-                geometry = new THREE.IcosahedronGeometry( params );
+            case "IcosahedronBufferGeometry": 
+                geometry = new THREE.IcosahedronBufferGeometry( params[0] );
                 break;
             case "TorusKnotBufferGeometry": 
                 geometry = new THREE.TorusKnotBufferGeometry( params[0], params[1], params[2], params[3] );
@@ -186,7 +186,6 @@ let magic = window.magic || {};
         randomValue = getRandomInt(0, objects.length-1);
         theObject = objects[randomValue];
         
-        name = theObject.name;
         geometry = getGeometry(theObject.geometry, theObject.params);
         textureUrl = theObject.textureUrl;
 
@@ -201,6 +200,8 @@ let magic = window.magic || {};
             scene.add( mesh);
             currentMesh = mesh.name;
          });
+
+         document.getElementsByTagName('h2')[0].innerText = theObject.name;
     }
     /**
      * Returns a random integer between min (inclusive) and max (inclusive).
@@ -243,7 +244,7 @@ let magic = window.magic || {};
             stats.begin();
         }
         
-        // scene.getObjectByName( 'geometricMesh' ).rotation.x -= 0.01;
+        scene.getObjectByName( 'geometricMesh' ).rotation.y += 0.01;
 
         // if(isSphereReadyForRotation) {
         //     rainbowMesh.rotation.x -= 0.01;

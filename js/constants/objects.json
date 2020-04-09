@@ -4,45 +4,59 @@
         {
             "name": "Rainbow Ball",
             "geometry": "SphereBufferGeometry",
-            "params": "1.7, 32, 32",
-            "textureUrl": "textures/rainbow.png"
+            "params": [
+                1, 32, 32
+            ],
+            "textureUrl": "/textures/rainbow.png"
         },
         {
             "name": "Pink Donut",
             "geometry": "TorusGeometry",
-            "params": "1.4, 0.4, 10, 20",
-            "textureUrl": "textures/donut.png"
+            "params": [
+                1.4, 0.4, 10, 20
+            ],
+            "textureUrl": "/textures/donut.png"
 
         },
         {
             "name": "Red Box",
             "geometry": "BoxGeometry",
-            "params": "2, 2, 1",
-            "textureUrl": "textures/redGlitter.jpg"
+            "params": [
+                2, 2, 1
+            ],
+            "textureUrl": "/textures/redGlitter.jpg"
         },
         {
             "name": "Jupiter",
             "geometry": "SphereBufferGeometry",
-            "params": "1.7, 32, 32",
-            "textureUrl": "textures/jupiter.png"
+            "params": [
+                1.7, 32, 32
+            ],
+            "textureUrl": "/textures/jupiter.jpg"
         },
         {
             "name": "Green Leaves",
             "geometry": "BoxGeometry",
-            "params": "2, 2, 1",
-            "textureUrl": "textures/greenLeaves.png"
+            "params": [
+                2, 2, 1
+            ],
+            "textureUrl": "/textures/greenLeaves.jpg"
         },
         {
             "name": "Grid",
             "geometry": "IcosahedronGeometry",
-            "params": "1.5",
-            "textureUrl": "textures/pattern01.jpg"
+            "params": [
+                1.5
+            ],
+            "textureUrl": "/textures/pattern01.jpg"
         },
         {
             "name": "Pattern",
             "geometry": "TorusKnotBufferGeometry",
-            "params": "1.5, 4, 100, 16",
-            "textureUrl": "textures/pattern02.jpg"
+            "params": [
+                1, 0.3, 100, 16
+            ],
+            "textureUrl": "/textures/pattern02.jpg"
         }
     ]
 }

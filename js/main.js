@@ -16,62 +16,16 @@ let magic = window.magic || {};
         camera,
         loader,
         meshes,
-        controls,
+        objects,
         renderer,
-        uniforms,
         axesHelper,
         currentMesh,
         rainbowMesh,
         currentColorTextMesh,
-        rainbowTextureMaterial,
-        gothamBlackRegularFont,
         isSphereReadyForRotation,
         SCREEN_WIDTH = window.innerWidth,
         SCREEN_HEIGHT = window.innerHeight,
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-
-    const materials = [
-
-    ];
-
-    const colors = [
-        {
-            'color':'0, 0, 0',
-            'name':'black'
-        },
-        {
-            'color':'255, 0, 0',
-            'name':'red'
-        },
-        {
-            'color':'0, 255, 0',
-            'name':'green'
-        },
-        {
-            'color':'0, 0, 255',
-            'name':'blue'
-        },
-        {
-            'color':'255, 255, 0',
-            'name':'yellow'
-        },
-        {
-            'color':'255, 0, 255',
-            'name':'purple'
-        },
-        {
-            'color':'50, 230, 255',
-            'name':'turquoise'
-        },
-        {
-            'color':'150, 75, 0',
-            'name':'brown'
-        },
-        {
-            'color':'255, 50, 200',
-            'name':'pink'
-        }
-    ];
 
     /**
      * Check hostname to verify Development Environment
@@ -108,7 +62,12 @@ let magic = window.magic || {};
     /**
      * Init all functions
      */
-    const init = (font) => {
+    const init = () => {
+        let jsonFileURL = '/js/constants/objects.json';
+        objects = new Array();
+
+        readJson(jsonFileURL);
+        
         setScene();
         
         if (developmentEnvironment()){
@@ -117,8 +76,6 @@ let magic = window.magic || {};
         }
 
         window.addEventListener( 'touchstart', renderElement, false );
-        renderElement();
-        update();
     }
 
     /**
@@ -143,28 +100,28 @@ let magic = window.magic || {};
      }
 
     /**
-      * Setup shader Material
-      * Init Uniforms
+     * Call objects.json file
      */
-     const setupShaderMaterial = () => {
-        let shaderMaterial;
+    function readJson(jsonFileURL){
+        let obj,
+            randomValue,
+            xmlhttp = new XMLHttpRequest();
 
-        uniforms = {
-            u_time: { value: 1.0 },
-            u_resolution: { type: "v2", value: new THREE.Vector2() },
+        xmlhttp.open('GET', jsonFileURL, true);
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4) {
+                if(xmlhttp.status == 200) {
+                    obj = JSON.parse(xmlhttp.responseText);
+                    objects = new Array();
+                    objects = obj.objects;
+
+                    renderElement();
+                    update();
+                }
+            }
         };
 
-        uniforms.u_resolution.value.x = window.innerWidth;
-        uniforms.u_resolution.value.y = window.innerHeight;
-
-        shaderMaterial =   new THREE.ShaderMaterial( {
-            name: "rainbow",
-            uniforms: uniforms,
-            vertexShader: document.getElementById( 'vertexShader' ).textContent,
-            fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
-        });
-
-        return shaderMaterial;
+        xmlhttp.send(null);
     }
 
     /**
@@ -173,152 +130,78 @@ let magic = window.magic || {};
     const loadTexture = (url) => {
         return new Promise(resolve => {
             new THREE.TextureLoader().load(url, resolve)
-        })
+        });
     }
 
     /**
-     * Renders a Sphere with a rainbow texture image
+     * Renders a Material with a texture image
      */
-    const getRainbowMaterial = () => {
-        loadTexture('textures/rainbow.png').then(texture => {
-            rainbowTextureMaterial =  new THREE.MeshBasicMaterial({ map: texture });
-        })
-        return rainbowTextureMaterial;
-    }
-
-     /**
-      * Loads the JSON font
-      * Create the text Mesh
-      * @param THREE.Vector3 tectPposition
-      */
-    const renderTextMesh = (font, text, textPosition, material, meshName) => {
-        let letterMesh,
-            geometry,
-            fontSize = 0.37,
-            letterSpacing = 0.3;
-
-        let textMesh = new THREE.Group();
-        
-        for(let i=0;i<text.length;i++){
-            geometry = new THREE.TextGeometry( text[i], {
-                font: font,
-                size: fontSize,
-                height: 0.2,
-                curveSegments: 15
-            });
-
-            geometry.center();
-
-            letterMesh = new THREE.Mesh( geometry, material );
-
-            letterMesh.position.x = letterSpacing*i;
-            letterMesh.position.y = 1;
-
-            textMesh.add( letterMesh)
-        }
-
-        textMesh.name = meshName;
-        textMesh.position.set(textPosition.x, textPosition.y, textPosition.z);
-        textMesh.rotation.x = 0.07;
-
-        scene.remove(scene.getObjectByName( 'colorName'));
-        scene.add(textMesh);
+    const loadMaterial = (textureUrl) => {
+        return loadTexture(textureUrl).then(texture => {
+            return new THREE.MeshBasicMaterial({ map: texture });
+        });
     }
 
     /**
-     * Click Event Handler
-     * renders a mesh with randomized geometry, material and color
+     * Grabs params and returns a Geometry
      */
-    const renderElement = () => {
-        let material = new THREE.MeshBasicMaterial( {color: getRandomColor()} ),
-            mesh,
-            geometry,
-            randomValue = getRandomInt(0, 3);
-        
-        switch (randomValue) {
-            case 0:
-                geometry = renderCubeGeometry();
+    const getGeometry = (name, params) => {
+        let geometry;
+
+        switch (name) {
+            case "SphereBufferGeometry":
+                geometry = new THREE.SphereBufferGeometry( params[0], params[1], params[2] );
                 break;
-            case 1:
-                geometry = renderSphereGeometry();
-                material = getRainbowMaterial();
+            case "TorusGeometry":
+                geometry = new THREE.TorusGeometry( params[0], params[1], params[2], params[3]  );
                 break;
-            case 2:
-                geometry = renderIcosahedronGeometry();
+            case "BoxGeometry":
+                geometry = new THREE.BoxGeometry( params[0], params[1], params[2]);
                 break;
-            case 3: 
-                geometry = renderTorusGeometry();
+            case "IcosahedronGeometry": 
+                geometry = new THREE.IcosahedronGeometry( params );
+                break;
+            case "TorusKnotBufferGeometry": 
+                geometry = new THREE.TorusKnotBufferGeometry( params[0], params[1], params[2], params[3] );
                 break;
             default:
                 return;
         }
-
-        scene.remove(scene.getObjectByName( 'geometricMesh'));
-
-        mesh = new THREE.Mesh( geometry, material );
-        mesh.name = "geometricMesh";
-        mesh.position.set(0, 2.2, 0);
-
-        meshes.push(mesh);
-        scene.add( mesh);
-        currentMesh = mesh.name;
+        return geometry;
     }
 
     /**
-     * renders a cube geometry
+     * Click Event Handler
+     * renders a mesh with randomized geometry and texture
      */
-    const renderCubeGeometry = () => {
-        let cubeWidth = 2,
-            cubeHeight = 2,
-            cubeGeometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 1 );
-        return cubeGeometry;
+    const renderElement = () => {
+        let mesh,
+            name,
+            params,
+            geometry,
+            theObject,
+            textureUrl,
+            randomValue;
+
+        randomValue = getRandomInt(0, objects.length-1);
+        theObject = objects[randomValue];
+        
+        name = theObject.name;
+        geometry = getGeometry(theObject.geometry, theObject.params);
+        textureUrl = theObject.textureUrl;
+
+        loadMaterial(textureUrl).then(material => {
+            scene.remove(scene.getObjectByName( 'geometricMesh'));
+
+            mesh = new THREE.Mesh( geometry, material );
+            mesh.name = "geometricMesh";
+            mesh.position.set(0, 2.2, 0);
+
+            meshes.push(mesh);
+            scene.add( mesh);
+            currentMesh = mesh.name;
+         });
     }
-
-    /**
-     * renders a sphere geometry
-     */
-    const renderSphereGeometry = () => {
-        let sphereRadius = 1.7,
-            sphereGeometry = new THREE.SphereBufferGeometry( sphereRadius, 32, 32 );
-        return sphereGeometry;
-    }
-
-    /**
-     * renders an icosahedron geometry
-     */
-    const renderIcosahedronGeometry = () => {
-        let icosahedronRadius = 1.5,
-            icosahedronGeometry = new THREE.IcosahedronGeometry(icosahedronRadius);
-        return icosahedronGeometry;
-    }
-
-    /**
-     * renders a torus geometry
-     */
-    const renderTorusGeometry = () => {
-        let torusRadius = 1.4,
-            tube = 0.4,
-            radialSegments = 10,
-            tubularSegments = 20,
-            torusGeometry = new THREE.TorusGeometry(torusRadius, tube, radialSegments, tubularSegments);
-        return torusGeometry;
-    }
-
-    /**
-     * Returns random numbers for RGB color
-     */
-    const getRandomColor = () => {
-        // return "rgb(" + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ", " + getRandomInt(0, 255) + ")";
-        let pos = getRandomInt(0, colors.length-1, true),
-            stringColor = "rgb(" + colors[pos].color + ")",
-            colorName = colors[pos].name;
-  
-        addColorName(colorName);
-        let material = new THREE.MeshBasicMaterial( {color: stringColor} );
-
-        return stringColor;
-    }
-
     /**
      * Returns a random integer between min (inclusive) and max (inclusive).
      * The value is no lower than min (or the next integer greater than min
@@ -329,23 +212,8 @@ let magic = window.magic || {};
     function getRandomInt(min, max, showOnConsole) {
         min = Math.ceil(min);
         max = Math.floor(max);
-        // let randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
         
-        let preValue = Math.random() * (max - min + 1);
-        // let randomInt = Math.floor(preValue) + min;
         return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    /**
-     * Adds color name to h2.innerText
-     * and adds the corresponding color class name
-     */
-    const addColorName = (colorName) => {
-        let h2Element = document.getElementsByTagName('h2')[0];
-        
-        h2Element.innerText = colorName;
-        h2Element.classList = '';
-        h2Element.classList.add(colorName);
     }
 
     /**
@@ -375,12 +243,12 @@ let magic = window.magic || {};
             stats.begin();
         }
         
-        scene.getObjectByName( 'geometricMesh' ).rotation.x -= 0.01;
+        // scene.getObjectByName( 'geometricMesh' ).rotation.x -= 0.01;
 
-        if(isSphereReadyForRotation) {
-            rainbowMesh.rotation.x -= 0.01;
-            rainbowMesh.rotation.y -= 0.01;
-        }
+        // if(isSphereReadyForRotation) {
+        //     rainbowMesh.rotation.x -= 0.01;
+        //     rainbowMesh.rotation.y -= 0.01;
+        // }
         
         renderer.render( scene, camera );
 
@@ -390,12 +258,8 @@ let magic = window.magic || {};
     }
 
     /** 
-     * Load the JSON font and Init all functions
+     * Init all functions
      */
-    loader = new THREE.FontLoader();
-    loader.load('../fonts/gotham_black_regular.json', function(font){
-        gothamBlackRegularFont = font;
-        init();
-    });
+    init();
 
 }(magic));

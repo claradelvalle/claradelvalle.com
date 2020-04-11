@@ -5,7 +5,7 @@
             "name": "Rainbow Ball",
             "geometry": "SphereBufferGeometry",
             "params": [
-                1, 32, 32
+                1.9, 32, 32
             ],
             "textureUrl": "/textures/rainbow.png"
         },
@@ -19,20 +19,60 @@
 
         },
         {
-            "name": "Red Box",
-            "geometry": "BoxGeometry",
-            "params": [
-                2, 2, 1
-            ],
-            "textureUrl": "/textures/redGlitter.jpg"
-        },
-        {
             "name": "Jupiter",
             "geometry": "SphereBufferGeometry",
             "params": [
                 1.7, 32, 32
             ],
             "textureUrl": "/textures/jupiter.jpg"
+        },
+        {
+            "name": "The Moon",
+            "geometry": "SphereBufferGeometry",
+            "params": [
+                1.7, 32, 32
+            ],
+            "textureUrl": "/textures/moon.jpg"
+        },
+        {
+            "name": "The Sun",
+            "geometry": "SphereBufferGeometry",
+            "params": [
+                1.7, 32, 32
+            ],
+            "textureUrl": "/textures/sun.jpg"
+        },
+        {
+            "name": "Venus",
+            "geometry": "SphereBufferGeometry",
+            "params": [
+                1.7, 32, 32
+            ],
+            "textureUrl": "/textures/venus.jpg"
+        },
+        {
+            "name": "Earth",
+            "geometry": "SphereBufferGeometry",
+            "params": [
+                1.7, 32, 32
+            ],
+            "textureUrl": "/textures/earth.jpg"
+        },
+        {
+            "name": "Mars",
+            "geometry": "SphereBufferGeometry",
+            "params": [
+                1.7, 32, 32
+            ],
+            "textureUrl": "/textures/mars.jpg"
+        }, 
+        {
+            "name": "Red Box",
+            "geometry": "BoxGeometry",
+            "params": [
+                2, 2, 1
+            ],
+            "textureUrl": "/textures/redGlitter.jpg"
         },
         {
             "name": "Green Leaves",

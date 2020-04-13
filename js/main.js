@@ -14,15 +14,11 @@ let magic = window.magic || {};
         clock,
         stats,
         camera,
-        loader,
-        meshes,
         objects,
+        controls,
         renderer,
         axesHelper,
         currentMesh,
-        rainbowMesh,
-        currentColorTextMesh,
-        isSphereReadyForRotation,
         SCREEN_WIDTH = window.innerWidth,
         SCREEN_HEIGHT = window.innerHeight,
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
@@ -82,13 +78,11 @@ let magic = window.magic || {};
      * Sets basic 3D Scene Elements
      */
     const setScene = () => {
-        meshes = new Array();
         scene = new THREE.Scene();
         clock = new THREE.Clock();
 
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
         camera.position.set( 0, 1, 10);
-        // camera.lookAt(0, 0, 0);
         
         renderer = new THREE.WebGLRenderer( );
         renderer.setPixelRatio( window.devicePixelRatio );
@@ -96,7 +90,7 @@ let magic = window.magic || {};
         renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
         document.body.appendChild( renderer.domElement );
 
-        // controls = new THREE.OrbitControls( camera, renderer.domElement );
+        controls = new THREE.OrbitControls( camera, renderer.domElement );
      }
 
     /**
@@ -164,10 +158,28 @@ let magic = window.magic || {};
             case "TorusKnotBufferGeometry": 
                 geometry = new THREE.TorusKnotBufferGeometry( params[0], params[1], params[2], params[3] );
                 break;
+            case "EggGeometry":
+                geometry = getEggGeometry();
             default:
                 return;
         }
         return geometry;
+    }
+
+    /**
+     * 
+     */
+    const getEggGeometry = () => {
+       // points - (x, y) pairs are rotated around the y-axis
+        var points = [];
+        for ( var deg = 0; deg <= 180; deg += 6 ) {
+            var rad = Math.PI * deg / 180;
+            var point = new THREE.Vector2( ( 0.72 + .08 * Math.cos( rad ) ) * Math.sin( rad ), - Math.cos( rad ) ); // the "egg equation"
+            // console.log( point ); // x-coord should be greater than zero to avoid degenerate triangles; it is not in this formula.
+            points.push( point );
+        }
+
+        return new THREE.LatheBufferGeometry( points, 32 );
     }
 
     /**
@@ -176,8 +188,6 @@ let magic = window.magic || {};
      */
     const renderElement = () => {
         let mesh,
-            name,
-            params,
             geometry,
             theObject,
             textureUrl,
@@ -196,9 +206,8 @@ let magic = window.magic || {};
             mesh.name = "geometricMesh";
             mesh.position.set(0, 2.2, 0);
 
-            meshes.push(mesh);
             scene.add( mesh);
-            currentMesh = mesh.name;
+            currentMesh = mesh;
          });
 
          document.getElementsByTagName('h2')[0].innerText = theObject.name;
@@ -244,12 +253,10 @@ let magic = window.magic || {};
             stats.begin();
         }
         
-        scene.getObjectByName( 'geometricMesh' ).rotation.y += 0.01;
-
-        // if(isSphereReadyForRotation) {
-        //     rainbowMesh.rotation.x -= 0.01;
-        //     rainbowMesh.rotation.y -= 0.01;
-        // }
+        if(currentMesh){
+            // scene.getObjectByName( 'geometricMesh' ).rotation.y += 0.01;
+            currentMesh.rotation.y += 0.01;
+        }
         
         renderer.render( scene, camera );
 

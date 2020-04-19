@@ -5,7 +5,7 @@
             "name": "Rainbow Ball",
             "geometry": "SphereBufferGeometry",
             "params": [
-                1, 32, 32
+                1.9, 32, 32
             ],
             "textureUrl": "/textures/rainbow.png",
             "positionX": "0",
@@ -25,10 +25,10 @@
 
         },
         {
-            "name": "Red Box",
-            "geometry": "BoxGeometry",
+            "name": "Jupiter",
+            "geometry": "SphereBufferGeometry",
             "params": [
-                2, 2, 1
+                1.7, 32, 32
             ],
             "textureUrl": "/textures/redGlitter.jpg",
             "positionX": "0",
@@ -36,7 +36,7 @@
             "positionZ": "6"
         },
         {
-            "name": "Jupiter",
+            "name": "The Moon",
             "geometry": "SphereBufferGeometry",
             "params": [
                 1.7, 32, 32

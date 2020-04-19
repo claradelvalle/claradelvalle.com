@@ -69,7 +69,6 @@ let magic = window.magic || {};
         }
 
         renderFireBall();
-        // renderELements();
 
         // window.addEventListener( 'touchstart', renderElement, false );
         window.addEventListener( 'touchstart', zoomOut, false );
@@ -111,7 +110,8 @@ let magic = window.magic || {};
                     objects = new Array();
                     objects = obj.objects;
 
-                    renderElement();
+                    // renderElements();
+
                     update();
                 }
             }
@@ -189,9 +189,66 @@ let magic = window.magic || {};
      * Zooms out a bit to see next element
      */
     const zoomOut = () => {
-        cameraPositionZ += 3;
+        cameraPositionZ += 1;
         camera.position.set( 0, 1, cameraPositionZ);
-        // console.log(z);
+        renderElement();
+    }
+
+    /**
+     * Renders elements on pageLoag
+     */
+
+    const renderElements = () => {
+        let mesh,
+        geometry,
+        theObject,
+        position,
+        textureUrl;
+        
+        for(let i=0; i<objects.length;i++){
+            theObject = objects[i];
+            position = theObject.position;
+            console.log(position);
+            geometry = getGeometry(theObject.geometry, theObject.params);
+            textureUrl = theObject.textureUrl;
+    
+            loadMaterial(textureUrl).then(material => {
+                mesh = new THREE.Mesh( geometry, material );
+                mesh.position.set(position);
+                console.log(theObject)
+
+                scene.add( mesh);
+             });   
+        }
+        console.log(scene.children);
+
+        // theObject = objects[0];
+        // console.log(theObject);
+        // geometry = getGeometry(theObject.geometry, theObject.params);
+        // textureUrl = theObject.textureUrl;
+
+        // loadMaterial(textureUrl).then(material => {
+        //     mesh = new THREE.Mesh( geometry, material );
+        //     mesh.name = "geometricMesh";
+        //     mesh.position.set(0, 2.2, 0);
+
+        //     scene.add( mesh);
+        //     currentMesh = mesh;
+        //  });   
+
+        //  theObject = objects[1];
+        
+        // geometry = getGeometry(theObject.geometry, theObject.params);
+        // textureUrl = theObject.textureUrl;
+
+        // loadMaterial(textureUrl).then(material => {
+        //     mesh = new THREE.Mesh( geometry, material );
+        //     mesh.name = "geometricMesh";
+        //     mesh.position.set(1.5, 2.2, 3);
+
+        //     scene.add( mesh);
+        //     currentMesh = mesh;
+        //  });   
     }
 
     /**
@@ -199,7 +256,8 @@ let magic = window.magic || {};
      * renders a mesh with randomized geometry and texture
      */
     const renderElement = () => {
-        let mesh,
+        let posZ,
+            mesh,
             geometry,
             theObject,
             textureUrl,
@@ -210,13 +268,15 @@ let magic = window.magic || {};
         
         geometry = getGeometry(theObject.geometry, theObject.params);
         textureUrl = theObject.textureUrl;
+        posZ = theObject.positionZ;
 
         loadMaterial(textureUrl).then(material => {
-            scene.remove(scene.getObjectByName( 'geometricMesh'));
+            // scene.remove(scene.getObjectByName( 'geometricMesh'));
 
             mesh = new THREE.Mesh( geometry, material );
             mesh.name = "geometricMesh";
-            mesh.position.set(0, 2.2, 0);
+            mesh.position.set(0, 2.2, posZ);
+            // mesh.position.set(meshPosition);
 
             scene.add( mesh);
             currentMesh = mesh;

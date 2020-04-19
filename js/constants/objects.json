@@ -7,7 +7,10 @@
             "params": [
                 1.9, 32, 32
             ],
-            "textureUrl": "/textures/rainbow.png"
+            "textureUrl": "/textures/rainbow.png",
+            "positionX": "0",
+            "positionY": "0",
+            "positionZ": "2"
         },
         {
             "name": "Pink Donut",
@@ -15,7 +18,10 @@
             "params": [
                 1.4, 0.4, 10, 20
             ],
-            "textureUrl": "/textures/donut.png"
+            "textureUrl": "/textures/donut.png",
+            "positionX": "0",
+            "positionY": "0",
+            "positionZ": "4"
 
         },
         {
@@ -24,7 +30,10 @@
             "params": [
                 1.7, 32, 32
             ],
-            "textureUrl": "/textures/jupiter.jpg"
+            "textureUrl": "/textures/redGlitter.jpg",
+            "positionX": "0",
+            "positionY": "0",
+            "positionZ": "6"
         },
         {
             "name": "The Moon",
@@ -32,47 +41,10 @@
             "params": [
                 1.7, 32, 32
             ],
-            "textureUrl": "/textures/moon.jpg"
-        },
-        {
-            "name": "The Sun",
-            "geometry": "SphereBufferGeometry",
-            "params": [
-                1.7, 32, 32
-            ],
-            "textureUrl": "/textures/sun.jpg"
-        },
-        {
-            "name": "Venus",
-            "geometry": "SphereBufferGeometry",
-            "params": [
-                1.7, 32, 32
-            ],
-            "textureUrl": "/textures/venus.jpg"
-        },
-        {
-            "name": "Earth",
-            "geometry": "SphereBufferGeometry",
-            "params": [
-                1.7, 32, 32
-            ],
-            "textureUrl": "/textures/earth.jpg"
-        },
-        {
-            "name": "Mars",
-            "geometry": "SphereBufferGeometry",
-            "params": [
-                1.7, 32, 32
-            ],
-            "textureUrl": "/textures/mars.jpg"
-        }, 
-        {
-            "name": "Red Box",
-            "geometry": "BoxGeometry",
-            "params": [
-                2, 2, 1
-            ],
-            "textureUrl": "/textures/redGlitter.jpg"
+            "textureUrl": "/textures/jupiter.jpg",
+            "positionX": "0",
+            "positionY": "0",
+            "positionZ": "8"
         },
         {
             "name": "Green Leaves",
@@ -80,7 +52,10 @@
             "params": [
                 2, 2, 1
             ],
-            "textureUrl": "/textures/greenLeaves.jpg"
+            "textureUrl": "/textures/greenLeaves.jpg",
+            "positionX": "0",
+            "positionY": "0",
+            "positionZ": "10"
         },
         {
             "name": "Grid",
@@ -88,7 +63,10 @@
             "params": [
                 1.5
             ],
-            "textureUrl": "/textures/pattern01.jpg"
+            "textureUrl": "/textures/pattern01.jpg",
+            "positionX": "0",
+            "positionY": "0",
+            "positionZ": "12"
         },
         {
             "name": "Pattern Knot",
@@ -96,7 +74,10 @@
             "params": [
                 1, 0.3, 100, 16
             ],
-            "textureUrl": "/textures/pattern02.jpg"
+            "textureUrl": "/textures/pattern02.jpg",
+            "positionX": "0",
+            "positionY": "0",
+            "positionZ": "0"
         }
     ]
 }

@@ -19,6 +19,8 @@ let magic = window.magic || {};
         renderer,
         axesHelper,
         currentMesh,
+        customUniforms,
+        cameraPositionZ,
         SCREEN_WIDTH = window.innerWidth,
         SCREEN_HEIGHT = window.innerHeight,
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
@@ -32,11 +34,6 @@ let magic = window.magic || {};
      * Checks if website is rendered on a mobile device
      */
     const isMobile = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-    
-    /**
-     * Returns a random number between min (inclusive) and max (exclusive)
-     */
-    const getRandomArbitrary = (min, max) => Math.random() * (max - min) + min;
     
     /**
      * Set up and show Javascript Performance Monitor
@@ -71,7 +68,11 @@ let magic = window.magic || {};
             showAxesHelper();
         }
 
-        window.addEventListener( 'touchstart', renderElement, false );
+        renderFireBall();
+        // renderELements();
+
+        // window.addEventListener( 'touchstart', renderElement, false );
+        window.addEventListener( 'touchstart', zoomOut, false );
     }
 
     /**
@@ -82,7 +83,8 @@ let magic = window.magic || {};
         clock = new THREE.Clock();
 
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-        camera.position.set( 0, 1, 10);
+        cameraPositionZ = 8
+        camera.position.set( 0, 1, cameraPositionZ);
         
         renderer = new THREE.WebGLRenderer( );
         renderer.setPixelRatio( window.devicePixelRatio );
@@ -171,15 +173,25 @@ let magic = window.magic || {};
      */
     const getEggGeometry = () => {
        // points - (x, y) pairs are rotated around the y-axis
-        var points = [];
-        for ( var deg = 0; deg <= 180; deg += 6 ) {
-            var rad = Math.PI * deg / 180;
-            var point = new THREE.Vector2( ( 0.72 + .08 * Math.cos( rad ) ) * Math.sin( rad ), - Math.cos( rad ) ); // the "egg equation"
+        let points = [];
+        for ( let deg = 0; deg <= 180; deg += 6 ) {
+            let rad = Math.PI * deg / 180;
+            let point = new THREE.Vector2( ( 0.72 + .08 * Math.cos( rad ) ) * Math.sin( rad ), - Math.cos( rad ) ); // the "egg equation"
             // console.log( point ); // x-coord should be greater than zero to avoid degenerate triangles; it is not in this formula.
             points.push( point );
         }
 
         return new THREE.LatheBufferGeometry( points, 32 );
+    }
+
+    /**
+     * New Click Event Handler
+     * Zooms out a bit to see next element
+     */
+    const zoomOut = () => {
+        cameraPositionZ += 3;
+        camera.position.set( 0, 1, cameraPositionZ);
+        // console.log(z);
     }
 
     /**
@@ -226,6 +238,77 @@ let magic = window.magic || {};
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+
+    /**
+     * 
+     */
+    const renderFireBall = () => {
+        // base image texture for mesh
+        let lavaTexture = new THREE.TextureLoader().load('textures/lava.jpg');
+
+        // multiplier for distortion speed 		
+        let baseSpeed = 0.02;
+        // number of times to repeat texture in each direction
+        let repeatS = 3.0;
+        let repeatT = 4.0;
+
+        // texture used to generate "randomness", distort all other textures
+        let noiseTexture = new THREE.TextureLoader().load('textures/cloud.png');
+
+        noiseTexture.wrapS = noiseTexture.wrapT = THREE.RepeatWrapping; 
+        // magnitude of noise effect
+        let noiseScale = 0.5;
+
+        // texture to additively blend with base image texture
+        let blendTexture = new THREE.TextureLoader().load('textures/lava.jpg');
+
+        blendTexture.wrapS = blendTexture.wrapT = THREE.RepeatWrapping; 
+        // multiplier for distortion speed 
+        let blendSpeed = 0.1;
+        // adjust lightness/darkness of blended texture
+        let blendOffset = 0.15;
+
+        // texture to determine normal displacement
+        let bumpTexture = noiseTexture;
+        bumpTexture.wrapS = bumpTexture.wrapT = THREE.RepeatWrapping; 
+        // multiplier for distortion speed 		
+        let bumpSpeed   = 0.02;
+        // magnitude of normal displacement
+        let bumpScale   = 5.0;
+
+        // use "this." to create global object
+        customUniforms = {
+            baseTexture: 	{ type: "t", value: lavaTexture },
+            baseSpeed:		{ type: "f", value: baseSpeed },
+            repeatS:		{ type: "f", value: repeatS },
+            repeatT:		{ type: "f", value: repeatT },
+            noiseTexture:	{ type: "t", value: noiseTexture },
+            noiseScale:		{ type: "f", value: noiseScale },
+            blendTexture:	{ type: "t", value: blendTexture },
+            blendSpeed: 	{ type: "f", value: blendSpeed },
+            blendOffset: 	{ type: "f", value: blendOffset },
+            bumpTexture:	{ type: "t", value: bumpTexture },
+            bumpSpeed: 		{ type: "f", value: bumpSpeed },
+            bumpScale: 		{ type: "f", value: bumpScale },
+            alpha: 			{ type: "f", value: 1.0 },
+            time: 			{ type: "f", value: 1.0 }
+        };
+
+        // create custom material from the shader code above
+        //   that is within specially labeled script tags
+        let customMaterial = new THREE.ShaderMaterial( 
+        {
+            uniforms: customUniforms,
+            vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
+            fragmentShader: document.getElementById( 'fragmentShader' ).textContent
+        }   );
+            
+        let ballGeometry = new THREE.SphereGeometry( .4, 16, 16 );
+        let ball = new THREE.Mesh(	ballGeometry, customMaterial );
+        ball.position.set(0, 0, 0);
+        scene.add( ball );
+    }
+
     /**
      * Handles window resize events
      */
@@ -246,8 +329,9 @@ let magic = window.magic || {};
     function update(nowMsec){
         requestAnimationFrame( update );
 
-        var delta = clock.getDelta();
+        let delta = clock.getDelta();
         // uniforms.u_time.value += delta * 2;
+    	customUniforms.time.value += delta;
 
         if (developmentEnvironment()){
             stats.begin();

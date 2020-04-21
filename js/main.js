@@ -190,7 +190,8 @@ let magic = window.magic || {};
      */
     const zoomOut = () => {
         cameraPositionZ += 1;
-        camera.position.set( 0, 1, cameraPositionZ);
+        camera.position.z = cameraPositionZ;
+        controls.update();
         renderElement();
     }
 

@@ -6,7 +6,7 @@
 
 let magic = window.magic || {};
 
-(function (){
+( (magic) => {
 
     'use strict';
 
@@ -71,7 +71,8 @@ let magic = window.magic || {};
         renderFireBall();
 
         // window.addEventListener( 'touchstart', renderElement, false );
-        window.addEventListener( 'touchstart', zoomOut, false );
+        // window.addEventListener( 'touchstart', zoomOut, false );
+        window.addEventListener( 'click', zoomOut, false );
     }
 
     /**
@@ -97,13 +98,13 @@ let magic = window.magic || {};
     /**
      * Call objects.json file
      */
-    function readJson(jsonFileURL){
+    const readJson = (jsonFileURL) => {
         let obj,
             randomValue,
             xmlhttp = new XMLHttpRequest();
 
         xmlhttp.open('GET', jsonFileURL, true);
-        xmlhttp.onreadystatechange = function() {
+        xmlhttp.onreadystatechange = () =>  {
             if (xmlhttp.readyState == 4) {
                 if(xmlhttp.status == 200) {
                     obj = JSON.parse(xmlhttp.responseText);
@@ -198,7 +199,6 @@ let magic = window.magic || {};
     /**
      * Renders elements on pageLoag
      */
-
     const renderElements = () => {
         let mesh,
         geometry,
@@ -285,6 +285,7 @@ let magic = window.magic || {};
 
          document.getElementsByTagName('h2')[0].innerText = theObject.name;
     }
+
     /**
      * Returns a random integer between min (inclusive) and max (inclusive).
      * The value is no lower than min (or the next integer greater than min
@@ -292,13 +293,12 @@ let magic = window.magic || {};
      * lower than max if max isn't an integer).
      * Using Math.round() will give you a non-uniform distribution!
      */
-    function getRandomInt(min, max, showOnConsole) {
+    const getRandomInt = (min, max, showOnConsole) =>  {
         min = Math.ceil(min);
         max = Math.floor(max);
         
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-
 
     /**
      * 
@@ -373,7 +373,7 @@ let magic = window.magic || {};
     /**
      * Handles window resize events
      */
-    function onWindowResize(){
+    const onWindowResize = () => {
         SCREEN_WIDTH = window.innerWidth;
         SCREEN_HEIGHT = window.innerHeight;
         aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
@@ -387,7 +387,7 @@ let magic = window.magic || {};
     /**
      * Updates objects on each frame
      */
-    function update(nowMsec){
+    const update = (nowMsec) => {
         requestAnimationFrame( update );
 
         let delta = clock.getDelta();
@@ -415,4 +415,4 @@ let magic = window.magic || {};
      */
     init();
 
-}(magic));
+}) ();

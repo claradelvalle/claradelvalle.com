@@ -184,29 +184,28 @@
   
   // Create Light
   var light = new THREE.PointLight(0xFFFFFF);
-    light.position.set(0, 0, 500);
-    scene.add(light);
+  light.position.set(0, 0, 500);
+  scene.add(light);
 
-    // Create Ball
-    var vertShader = document.getElementById('vertexShader').innerHTML;
-    var fragShader = document.getElementById('fragmentShader').innerHTML;
+  // Create Ball
+  var vertShader = document.getElementById('vertexShader').innerHTML;
+  var fragShader = document.getElementById('fragmentShader').innerHTML;
 
-    var uniforms = {
-        texture1: { type: "t", value: new THREE.TextureLoader().load('../textures/rainbow.png' ) }
-    };
+  var uniforms = {
+    baseTexture: { type: "t", value: new THREE.TextureLoader().load('textures/rainbow.png' ) }
+  };
 
-    var material = new THREE.ShaderMaterial({
-        uniforms: uniforms,
-        vertexShader: vertShader,
-        fragmentShader: fragShader
-    });
+  var material = new THREE.ShaderMaterial({
+      uniforms: uniforms,
+      vertexShader: vertShader,
+      fragmentShader: fragShader
+  });
 
-    var ball = new THREE.Mesh(new THREE.SphereGeometry(1, 50, 50), material);
-    scene.add(ball);
-
-
+  var ball = new THREE.Mesh(new THREE.SphereGeometry(1, 50, 50), material);
+  scene.add(ball);
 
   render();
-  </script>
+
+</script>
 </body>
 </html>

@@ -1,0 +1,532 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: proximaNova-Medium;
+  src: url(./fonts/ProximaNova-Medium.ttf);
+}
+
+@font-face {
+  font-family: gtWalsheim-light;
+  src: url(./fonts/gt-walsheim-light-web.ttf);
+}
+
+@font-face {
+  font-family: FreightBigPro-BoldItalic;
+  src: url(./fonts/FreightBigPro_BoldItalic.otf);
+}
+
+@font-face {
+  font-family: FreightBigPro-Book;
+  src: url(./fonts/FreightBigPro_Book.otf);
+}
+
+body {
+  color: #000000;
+  background: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 1440px;
+  background-color: #FFFFFF;
+}
+
+section {
+  padding-left: 3.48vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  section {
+    padding-left: 50.1px;
+  }
+}
+
+.container {
+  margin-left: 3.48vw;
+  margin-right: 8vw;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+h2 {
+  font-size: 4.167vw;
+  margin-bottom: 2.639vw;
+  font-family: FreightBigPro-Book;
+}
+
+@media only screen and (min-width: 1440px) {
+  h2 {
+    font-size: 60px;
+    margin-bottom: 38px;
+  }
+}
+
+p {
+  font-size: 1.458vw;
+  line-height: 1.632vw;
+  font-family: gtWalsheim-light;
+  margin-bottom: 2vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  p {
+    margin-bottom: 28.8px;
+    font-size: 21px;
+    line-height: 23.5px;
+  }
+}
+
+header {
+  height: 96px;
+  width: 1440px;
+  color: #000000;
+  display: flex;
+  margin: 0 auto;
+  position: fixed;
+  align-items: center;
+  letter-spacing: 0.2vw;
+  background-color: #FFFFFF;
+  justify-content: space-between;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+header .header-logo {
+  width: 73px;
+  height: 67px;
+  margin-left: 69px;
+}
+
+@media only screen and (min-width: 768px) {
+  header ul {
+    justify-content: space-between;
+    margin-right: 70px;
+  }
+}
+
+header li {
+  float: left;
+  font-size: 12px;
+  padding-right: 20px;
+  font-family: proximaNova-Medium;
+}
+
+@media only screen and (min-width: 1400px) {
+  header {
+    font-size: 14px;
+  }
+}
+
+.hero {
+  color: #FFFFFF;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(img/telon.jpg);
+  height: 895px;
+  overflow-y: scroll;
+}
+
+.hero .hero-content {
+  width: 65vw;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 150px;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero .hero-content {
+    padding-top: 24.306vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .hero .hero-content {
+    width: 925px;
+    padding-top: 350px;
+  }
+}
+
+.hero h3 {
+  font-family: FreightBigPro-BoldItalic;
+  font-size: 3.819vw;
+  margin-bottom: 27.778vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .hero h3 {
+    font-size: 55px;
+    margin-bottom: 400px;
+  }
+}
+
+.hero p {
+  font-family: gtWalsheim-light;
+  font-size: 3.819vw;
+  line-height: 4.022vw;
+  margin-bottom: 17.361vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .hero p {
+    font-size: 55px;
+    line-height: 57.91px;
+    margin-bottom: 250px;
+  }
+}
+
+.two-columns-container {
+  color: #000;
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid 1px #000000;
+  padding-top: 6.944vw;
+}
+
+@media only screen and (min-width: 1400px) {
+  .two-columns-container {
+    padding-top: 100px;
+  }
+}
+
+.two-columns-container .column {
+  text-align: left;
+  padding: 3vw 10vw 1vw 3vw;
+}
+
+@media only screen and (min-width: 1400px) {
+  .two-columns-container .column {
+    padding: 43.2px 144px 14.4px 43.2px;
+  }
+}
+
+.two-columns-container p {
+  letter-spacing: 0.8px;
+}
+
+.two-columns-container .no-padding {
+  padding: 0;
+}
+
+.two-columns-container ul {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.two-columns-container li {
+  text-align: left;
+  margin-bottom: 1vw;
+  font-size: 1.3vw;
+}
+
+.conservacion {
+  padding: 2.78vw 0 6.94vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .conservacion {
+    padding: 40px 0 100px;
+  }
+}
+
+.conservacion h1 {
+  color: #000000;
+  font-size: 6.806vw;
+  line-height: 6.806vw;
+  font-family: FreightBigPro-Book;
+}
+
+@media only screen and (min-width: 768px) {
+  .conservacion h1 {
+    font-size: 6.6vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .conservacion h1 {
+    font-size: 98px;
+    line-height: 98px;
+  }
+}
+
+.conservacion h1 span {
+  color: #E92C4E;
+  font-family: FreightBigPro-BoldItalic;
+}
+
+.siempre-telon {
+  color: #FFFFFF;
+  background-position: right;
+  padding: 10vw 8vw 8.13vw 3.48vw;
+  background-repeat: no-repeat;
+  background-image: url(./img/pulseTeatro.jpg);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (min-width: 1440px) {
+  .siempre-telon {
+    padding: 153px 115.1px 117px 50.1px;
+  }
+}
+
+.siempre-telon p {
+  width: 41.53vw;
+  margin-left: 4.86vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .siempre-telon p {
+    width: 598px;
+    margin-left: 70px;
+  }
+}
+
+.siempre-telon p span {
+  font-size: 1.708vw;
+  line-height: 1.854vw;
+  font-family: FreightBigPro-BoldItalic;
+}
+
+@media only screen and (min-width: 1440px) {
+  .siempre-telon p span {
+    font-size: 24.6px;
+    line-height: 26.7px;
+  }
+}
+
+.video-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8.05vw 9.17vw 6.74vw;
+}
+
+@media only screen and (min-width: 1400px) {
+  .video-container {
+    padding: 116px 132px 97px;
+  }
+}
+
+.video-container iframe {
+  width: 81.67vw;
+  height: 44.01vw;
+}
+
+@media only screen and (min-width: 1400px) {
+  .video-container iframe {
+    width: 1176px;
+    height: 635px;
+  }
+}
+
+.etapas-proceso h2 {
+  color: #E92C4E;
+}
+
+.etapas-proceso .slider {
+  width: 50%;
+  margin: 100px auto;
+}
+
+.etapas-proceso .slider .slick-slide {
+  margin: 0px 20px;
+}
+
+.etapas-proceso .slider .slick-slide img {
+  width: 100%;
+}
+
+.etapas-proceso .slider .slick-prev:before,
+.etapas-proceso .slider .slick-next:before {
+  color: #000000;
+}
+
+.etapas-proceso .slider .slick-slide {
+  transition: all ease-in-out .3s;
+  opacity: .2;
+}
+
+.etapas-proceso .slider .slick-active {
+  opacity: .5;
+}
+
+.etapas-proceso .slider .slick-current {
+  opacity: 1;
+}
+
+.fondos .fondos-content {
+  display: flex;
+  flex-direction: row;
+  padding-top: 4.931vw;
+  margin-left: 5.9vw;
+  padding-bottom: 10.069vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .fondos .fondos-content {
+    margin-left: 85px;
+    padding-top: 71px;
+    padding-bottom: 145px;
+  }
+}
+
+.fondos .fondos-content .left-column {
+  text-align: right;
+  padding: 2.5vw 2.847vw 3.472vw 0;
+  background-size: contain;
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-image: url(./img/fondoTransparente.png);
+}
+
+@media only screen and (min-width: 1440px) {
+  .fondos .fondos-content .left-column {
+    padding: 36px 45px 50px 0;
+  }
+}
+
+.fondos .fondos-content .left-column p {
+  font-family: FreightBigPro-BoldItalic;
+  font-size: 2.5vw;
+  line-height: 2.5vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .fondos .fondos-content .left-column p {
+    font-size: 37px;
+    line-height: 37px;
+  }
+}
+
+.fondos .fondos-content .right-column {
+  padding-left: 2.22vw;
+  padding-right: 13.4vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .fondos .fondos-content .right-column {
+    padding-left: 32px;
+    padding-right: 193px;
+  }
+}
+
+.calendario {
+  padding-bottom: 150px;
+}
+
+.calendario .svg {
+  width: 100%;
+  height: auto;
+}
+
+.conozca-mas {
+  padding-top: 5.347vw;
+  padding-bottom: 17.361vw;
+  background-repeat: no-repeat;
+  background-image: url(img/footer.jpg);
+  background-position: left;
+  background-size: 170%;
+}
+
+@media only screen and (min-width: 768px) {
+  .conozca-mas {
+    background-position: 0;
+    background-size: auto;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .conozca-mas {
+    padding-top: 77px;
+    padding-bottom: 250px;
+  }
+}
+
+.conozca-mas h2 span {
+  color: #E92C4E;
+  font-family: FreightBigPro-BoldItalic;
+}
+
+.conozca-mas a {
+  color: #000000;
+  font-size: 13px;
+  font-family: gtWalsheim-light;
+  text-decoration: none;
+}
+
+.conozca-mas ul {
+  margin-top: 5.903vw;
+  margin-left: 5.07vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .conozca-mas ul {
+    margin-top: 85px;
+    margin-left: 73px;
+  }
+}
+
+.conozca-mas li {
+  margin-bottom: 15px;
+}
+
+.conozca-mas li:last-child {
+  margin-top: 30px;
+}

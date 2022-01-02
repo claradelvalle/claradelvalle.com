@@ -313,11 +313,12 @@ header li {
 
 .siempre-telon {
   color: #FFFFFF;
+  background-size: cover;
   background-position: right;
-  padding: 10vw 8vw 8.13vw 3.48vw;
   background-repeat: no-repeat;
-  background-image: url(./img/pulseTeatro.jpg);
+  padding: 10vw 8vw 8.13vw 3.48vw;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  background-image: url(./img/pulseTeatro.jpg);
 }
 
 @media only screen and (min-width: 1440px) {
@@ -376,39 +377,97 @@ header li {
   }
 }
 
+.etapas-proceso {
+  padding-top: 5.069vw;
+  padding-bottom: 5.625vw;
+  padding-left: 0;
+  background-color: #EEEEEE;
+  background-repeat: repeat-x;
+  background-image: url(./img/redDash.png);
+  background-position-y: center;
+}
+
+@media only screen and (min-width: 1440px) {
+  .etapas-proceso {
+    padding-top: 73px;
+    padding-bottom: 81px;
+  }
+}
+
 .etapas-proceso h2 {
   color: #E92C4E;
+  margin-bottom: 2.153vw;
+  padding-left: 3.48vw;
 }
 
-.etapas-proceso .slider {
-  width: 50%;
-  margin: 100px auto;
+@media only screen and (min-width: 1440px) {
+  .etapas-proceso h2 {
+    margin-bottom: 31px;
+    padding-left: 50.1px;
+  }
 }
 
-.etapas-proceso .slider .slick-slide {
-  margin: 0px 20px;
+.etapas-proceso p span {
+  font-size: 1.71vw;
+  font-family: FreightBigPro-BoldItalic;
 }
 
-.etapas-proceso .slider .slick-slide img {
-  width: 100%;
+@media only screen and (min-width: 1440px) {
+  .etapas-proceso p span {
+    font-size: 24.64px;
+  }
 }
 
-.etapas-proceso .slider .slick-prev:before,
-.etapas-proceso .slider .slick-next:before {
-  color: #000000;
+.etapas-proceso .outer-slider-container .slick-slide {
+  margin: 0 62px;
+  background-color: #FFFFFF;
+  padding: 2.57vw 6.042vw 2.819vw 5.07vw;
 }
 
-.etapas-proceso .slider .slick-slide {
-  transition: all ease-in-out .3s;
-  opacity: .2;
+@media only screen and (min-width: 1440px) {
+  .etapas-proceso .outer-slider-container .slick-slide {
+    padding: 37px 87px 40.59px 73px;
+  }
 }
 
-.etapas-proceso .slider .slick-active {
-  opacity: .5;
+.etapas-proceso .inner-slider-container .slick-slide {
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
 }
 
-.etapas-proceso .slider .slick-current {
+.etapas-proceso .slick-dots {
+  bottom: 15px;
+}
+
+.etapas-proceso .slick-dots li {
+  margin: 0;
+}
+
+.etapas-proceso .slick-dots li button:before {
+  color: #FFFFFF;
   opacity: 1;
+  font-size: 2.083vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .etapas-proceso .slick-dots li button:before {
+    font-size: 30px;
+  }
+}
+
+.etapas-proceso .slick-dots li.slick-active button:before {
+  color: #CCCCCC;
+}
+
+.fondos {
+  padding-top: 10.625vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .fondos {
+    padding-top: 153px;
+  }
 }
 
 .fondos .fondos-content {

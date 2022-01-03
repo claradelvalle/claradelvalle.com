@@ -612,6 +612,136 @@ header li {
   height: auto;
 }
 
+.faq {
+  padding-right: 3.48vw;
+}
+
+.faq .columns-container {
+  display: flex;
+  flex-direction: row;
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq {
+    padding-right: 50.1px;
+  }
+}
+
+.faq .red-line {
+  flex-grow: 7;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  border-top: solid 3px #E92C4E;
+}
+
+.faq h4 {
+  color: #E92C4E;
+  letter-spacing: 1.597vw;
+  font-family: proximaNova-Medium;
+}
+
+@media only screen and (min-width: 768px) {
+  .faq h4 {
+    font-size: 2.326vw;
+    margin: 0 4.861vw;
+    margin-bottom: 10.417vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq h4 {
+    margin: 0 70px;
+    font-size: 33.49px;
+    margin-bottom: 150px;
+    letter-spacing: 23px;
+  }
+}
+
+.faq h5 {
+  font-size: 3.1vw;
+  margin-bottom: 3.1vw;
+  font-family: FreightBigPro-BoldItalic;
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq h5 {
+    font-size: 44.64px;
+    margin-bottom: 44.64px;
+  }
+}
+
+.faq .padding-left-container {
+  padding-left: 5.069vw;
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq .padding-left-container {
+    padding-left: 73px;
+  }
+}
+
+.faq img {
+  width: 56%;
+}
+
+.faq .colorful-paragraphs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.faq .colorful-paragraphs p {
+  border-radius: 10px;
+}
+
+.faq .colorful-paragraphs p:nth-child(1), .faq .colorful-paragraphs p:nth-child(6) {
+  background-color: #F3D04B;
+}
+
+.faq .colorful-paragraphs p:nth-child(2), .faq .colorful-paragraphs p:nth-child(8) {
+  background-color: #4D7FF2;
+}
+
+.faq .colorful-paragraphs p:nth-child(3), .faq .colorful-paragraphs p:nth-child(9) {
+  background-color: #87D870;
+}
+
+.faq .colorful-paragraphs p:nth-child(4) {
+  background-color: #F86E50;
+}
+
+.faq .colorful-paragraphs p:nth-child(5) {
+  color: #FFFFFF;
+  background-color: #551D78;
+}
+
+.faq .colorful-paragraphs p:nth-child(7) {
+  background-color: #DB3743;
+}
+
+.faq .colorful-paragraphs p:nth-child(10) {
+  background-color: #87E0F8;
+}
+
+.faq .colorful-paragraphs p:nth-child(11) {
+  background-color: #4D7FF2;
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .colorful-paragraphs p {
+    font-size: 1.086vw;
+    margin-right: 0.903vw;
+    margin-bottom: 1.235vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq .colorful-paragraphs p {
+    font-size: 15.64px;
+    margin-right: 13px;
+    margin-bottom: 17.78px;
+  }
+}
+
 .conozca-mas {
   padding-top: 5.347vw;
   padding-bottom: 17.361vw;

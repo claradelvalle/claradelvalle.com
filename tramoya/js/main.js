@@ -5,8 +5,23 @@ $(document).on('ready', function() {
         // autoplay: true,
         infinite: true,
         centerMode: true,
-        centerPadding: '250px',
-        slidesToShow: 1
+        slidesToShow: 1,
+        mobileFirst: true,
+        centerPadding: '3.906vw',
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    centerPadding: '17.361vw',
+                }
+            },
+            {
+                breakpoint: 1440,
+                settings: {
+                    centerPadding: '250px'
+                }
+            }
+        ]
     });
 
     $(".inner-slider-container").slick({

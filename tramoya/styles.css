@@ -107,9 +107,16 @@ section {
 }
 
 h2 {
-  font-size: 4.167vw;
-  margin-bottom: 2.639vw;
+  font-size: 6vw;
+  margin-bottom: 3.5vw;
   font-family: FreightBigPro-Book;
+}
+
+@media only screen and (min-width: 1440px) {
+  h2 {
+    font-size: 4.167vw;
+    margin-bottom: 2.639vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -120,10 +127,16 @@ h2 {
 }
 
 p {
-  font-size: 1.458vw;
-  line-height: 1.632vw;
+  font-size: 3vw;
   font-family: gtWalsheim-light;
   margin-bottom: 2vw;
+}
+
+@media only screen and (min-width: 768px) {
+  p {
+    font-size: 1.458vw;
+    line-height: 1.632vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -175,13 +188,19 @@ header li {
 }
 
 .hero {
+  height: 700px;
   color: #FFFFFF;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url(img/telon.jpg);
-  height: 895px;
-  overflow-y: scroll;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero {
+    height: 895px;
+    overflow-y: scroll;
+  }
 }
 
 .hero .hero-content {
@@ -193,35 +212,47 @@ header li {
 
 @media only screen and (min-width: 768px) {
   .hero .hero-content {
-    padding-top: 24.306vw;
+    padding-top: 470px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .hero .hero-content {
     width: 925px;
-    padding-top: 350px;
   }
 }
 
 .hero h3 {
+  font-size: 6vw;
   font-family: FreightBigPro-BoldItalic;
-  font-size: 3.819vw;
-  margin-bottom: 27.778vw;
+  margin-bottom: 13vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero h3 {
+    font-size: 3.819vw;
+    margin-bottom: 340px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
   .hero h3 {
     font-size: 55px;
-    margin-bottom: 400px;
   }
 }
 
 .hero p {
   font-family: gtWalsheim-light;
-  font-size: 3.819vw;
-  line-height: 4.022vw;
-  margin-bottom: 17.361vw;
+  font-size: 4vw;
+  line-height: 4.5vw;
+  margin-bottom: 11vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero p {
+    font-size: 3.819vw;
+    margin-bottom: 17.361vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -237,28 +268,46 @@ header li {
   display: flex;
   flex-direction: row;
   border-bottom: solid 1px #000000;
-  padding-top: 6.944vw;
+  padding: 7vw 8vw 7vw 3.48vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .two-columns-container {
+    padding: 5.278vw 8vw 0 3.48vw;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
   .two-columns-container {
-    padding-top: 100px;
+    padding-top: 76px;
   }
 }
 
 .two-columns-container .column {
   text-align: left;
-  padding: 3vw 10vw 1vw 3vw;
+  padding: 0 6vw 1vw 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .two-columns-container .column {
+    padding: 0 10vw 1vw 3vw;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
   .two-columns-container .column {
-    padding: 43.2px 144px 14.4px 43.2px;
+    padding: 0 144px 14.4px 43.2px;
   }
 }
 
 .two-columns-container p {
-  letter-spacing: 0.8px;
+  letter-spacing: 0.4px;
+}
+
+@media only screen and (min-width: 768px) {
+  .two-columns-container p {
+    letter-spacing: 0.8px;
+  }
 }
 
 .two-columns-container .no-padding {
@@ -277,12 +326,12 @@ header li {
 }
 
 .conservacion {
-  padding: 2.78vw 0 6.94vw;
+  padding: 2.78vw 8vw 6.94vw 3.48vw;
 }
 
 @media only screen and (min-width: 1440px) {
   .conservacion {
-    padding: 40px 0 100px;
+    padding: 40px 115.2px 100px 50.11px;
   }
 }
 
@@ -340,9 +389,16 @@ header li {
 }
 
 .siempre-telon p span {
-  font-size: 1.708vw;
-  line-height: 1.854vw;
+  font-size: 4vw;
+  line-height: 4vw;
   font-family: FreightBigPro-BoldItalic;
+}
+
+@media only screen and (min-width: 768px) {
+  .siempre-telon p span {
+    font-size: 1.708vw;
+    line-height: 1.854vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -407,25 +463,38 @@ header li {
   }
 }
 
-.etapas-proceso p span {
-  font-size: 1.71vw;
+.etapas-proceso span {
   font-family: FreightBigPro-BoldItalic;
+  font-size: 4vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .etapas-proceso span {
+    font-size: 1.71vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-  .etapas-proceso p span {
+  .etapas-proceso span {
     font-size: 24.64px;
   }
 }
 
 .etapas-proceso .outer-slider-container .slick-slide {
-  margin: 0 62px;
+  margin: 0;
   background-color: #FFFFFF;
   padding: 2.57vw 6.042vw 2.819vw 5.07vw;
 }
 
+@media only screen and (min-width: 768px) {
+  .etapas-proceso .outer-slider-container .slick-slide {
+    margin: 0 4.306vw;
+  }
+}
+
 @media only screen and (min-width: 1440px) {
   .etapas-proceso .outer-slider-container .slick-slide {
+    margin: 0 62px;
     padding: 37px 87px 40.59px 73px;
   }
 }
@@ -440,14 +509,22 @@ header li {
   bottom: 15px;
 }
 
-.etapas-proceso .slick-dots li {
-  margin: 0;
+@media only screen and (min-width: 768px) {
+  .etapas-proceso .slick-dots li {
+    margin: 0;
+  }
 }
 
 .etapas-proceso .slick-dots li button:before {
   color: #FFFFFF;
   opacity: 1;
-  font-size: 2.083vw;
+  font-size: 11vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .etapas-proceso .slick-dots li button:before {
+    font-size: 2.083vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {

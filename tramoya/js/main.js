@@ -30,4 +30,64 @@ $(document).on('ready', function() {
         infinite: true,
     });
 
+    // Dynamic Tramoya Diagrams
+    $('#tagFoto2').click(() => {
+        $('.dynamic-diagram').css('background-image','url(./img/tramoya02.png)');
+    });
+
+    $('#tagFoto3').click(() => {
+        $('.dynamic-diagram').css('background-image','url(./img/tramoya03.png)');
+    });
+
+    $('.tagFoto4').click(() => {
+        $('.dynamic-diagram').css('background-image','url(./img/tramoya04.png)');
+    });
+
+    $('.tagFoto5').click(() => {
+        $('.dynamic-diagram').css('background-image','url(./img/tramoya05.png)');
+    });
+
+    let isOdd = (num) => {
+        return num % 2;
+    }
+
+    // Read FAQ JSON file
+    // let jqxhr = $.getJSON('./js/faq.json', (faqs) => {
+    //     let innerHTML = '',
+    //         leftColumnInnerHTML = '<div class="left-column">',
+    //         rightColumnInnerHTML = '<div class="right-column">',
+    //         $questionsContainer = $('.questions-container');
+    //     // console.log(faqs.questions);
+
+    //     $.each(faqs.questions, function(key, item) {
+    //         if(key%2 == 0){
+    //             leftColumnInnerHTML += '<div class="question">' + item.question + '</div>';
+    //             leftColumnInnerHTML += '<div class="answer"><p>' + item.answer + '</p></div>';
+    //         }
+    //         else {
+    //             rightColumnInnerHTML += '<div class="question">' + item.question + '</div>';
+    //             rightColumnInnerHTML += '<div class="answer"><p>' + item.answer + '</p></div>';
+    //         }
+    //     });
+
+    //     leftColumnInnerHTML += '</div>';
+    //     rightColumnInnerHTML += '</div>';
+
+    //     $questionsContainer.append(leftColumnInnerHTML);
+    //     $questionsContainer.append(rightColumnInnerHTML);
+    //  })
+    //  .done(() => {
+    //     // Accordion Questions
+    //     $('.question').click((e) => {
+    //         let target = e.target;
+    //         target.classList.toggle('active');
+    //         let answer = target.nextElementSibling;
+    //         if(answer.style.display === "block") {
+    //             answer.style.display = "none";
+    //         }
+    //         else {
+    //             answer.style.display = "block";
+    //         }
+    //     });
+    //  });
 });

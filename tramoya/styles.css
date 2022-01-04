@@ -412,7 +412,13 @@ header li {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8.05vw 9.17vw 6.74vw;
+  padding: 8.05vw 3.48vw 6.74vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .video-container {
+    padding: 8.05vw 9.17vw 6.74vw;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
@@ -422,8 +428,14 @@ header li {
 }
 
 .video-container iframe {
-  width: 81.67vw;
-  height: 44.01vw;
+  width: 93vw;
+  height: 50.1158vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .video-container iframe {
+    width: 81.67vw;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
@@ -463,19 +475,19 @@ header li {
   }
 }
 
-.etapas-proceso span {
+.etapas-proceso p {
   font-family: FreightBigPro-BoldItalic;
   font-size: 4vw;
 }
 
 @media only screen and (min-width: 768px) {
-  .etapas-proceso span {
+  .etapas-proceso p {
     font-size: 1.71vw;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .etapas-proceso span {
+  .etapas-proceso p {
     font-size: 24.64px;
   }
 }
@@ -548,11 +560,18 @@ header li {
 }
 
 .fondos .fondos-content {
-  display: flex;
-  flex-direction: row;
-  padding-top: 4.931vw;
-  margin-left: 5.9vw;
   padding-bottom: 10.069vw;
+  padding-right: 13.4vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .fondos .fondos-content {
+    display: flex;
+    padding-right: 0;
+    margin-left: 5.9vw;
+    flex-direction: row;
+    padding-top: 4.931vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -564,12 +583,20 @@ header li {
 }
 
 .fondos .fondos-content .left-column {
-  text-align: right;
-  padding: 2.5vw 2.847vw 3.472vw 0;
+  margin-bottom: 4vw;
+  padding: 3.2vw 2.847vw 3vw 5vw;
   background-size: contain;
-  background-position: top right;
   background-repeat: no-repeat;
+  background-position: top right;
   background-image: url(./img/fondoTransparente.png);
+}
+
+@media only screen and (min-width: 768px) {
+  .fondos .fondos-content .left-column {
+    text-align: right;
+    margin-bottom: 0;
+    padding: 2.5vw 2.847vw 3.472vw 0;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -579,9 +606,16 @@ header li {
 }
 
 .fondos .fondos-content .left-column p {
+  font-size: 4vw;
+  margin-bottom: 0;
   font-family: FreightBigPro-BoldItalic;
-  font-size: 2.5vw;
-  line-height: 2.5vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .fondos .fondos-content .left-column p {
+    font-size: 2.5vw;
+    line-height: 2.5vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -592,8 +626,15 @@ header li {
 }
 
 .fondos .fondos-content .right-column {
-  padding-left: 2.22vw;
-  padding-right: 13.4vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .fondos .fondos-content .right-column {
+    padding-left: 2.22vw;
+    padding-right: 13.403vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -621,9 +662,17 @@ header li {
   flex-direction: row;
 }
 
+@media only screen and (min-width: 768px) {
+  .faq {
+    padding-right: 3.48vw;
+    padding-bottom: 6.597vw;
+  }
+}
+
 @media only screen and (min-width: 1440px) {
   .faq {
     padding-right: 50.1px;
+    padding-bottom: 95px;
   }
 }
 
@@ -680,10 +729,6 @@ header li {
   }
 }
 
-.faq img {
-  width: 56%;
-}
-
 .faq .colorful-paragraphs {
   display: flex;
   flex-wrap: wrap;
@@ -691,6 +736,7 @@ header li {
 
 .faq .colorful-paragraphs p {
   border-radius: 10px;
+  padding: 0 5px;
 }
 
 .faq .colorful-paragraphs p:nth-child(1), .faq .colorful-paragraphs p:nth-child(6) {
@@ -732,6 +778,9 @@ header li {
     margin-right: 0.903vw;
     margin-bottom: 1.235vw;
   }
+  .faq .colorful-paragraphs p:hover {
+    cursor: pointer;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -742,12 +791,261 @@ header li {
   }
 }
 
+.faq .colorful-container {
+  width: 46vw;
+}
+
+.faq .dynamic-diagram {
+  width: 54vw;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(./img/tramoya01.png);
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .dynamic-diagram {
+    min-height: 37.361vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq .dynamic-diagram {
+    min-height: 538px;
+  }
+}
+
+.faq .questions-container {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .questions-container {
+    margin-top: 8.333vw;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq .questions-container {
+    margin-top: 120px;
+  }
+}
+
+.faq .left-column,
+.faq .right-column {
+  width: 40.8vw;
+  max-width: 49.9%;
+}
+
+.faq .question {
+  transition: 0.2s;
+  border-radius: 15px;
+  font-family: FreightBigPro-BoldItalic;
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-image: url(./img/questionBg.png);
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .question {
+    margin-bottom: 3.125vw;
+    font-size: 1.492vw;
+  }
+  .faq .question:hover {
+    cursor: pointer;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq .question {
+    margin-bottom: 45px;
+    font-size: 21.48px;
+  }
+}
+
+.faq .active {
+  margin-bottom: 0;
+  border-radius: 15px 15px 0 0;
+  background-image: none;
+}
+
+.faq .answer {
+  display: none;
+  overflow: hidden;
+  border-radius: 0 0 15px 15px;
+  background-color: #E9E9E9;
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .answer {
+    margin-bottom: 3.125vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq .answer {
+    margin-bottom: 45px;
+  }
+}
+
+.faq .question,
+.faq .answer {
+  border: 1px solid #E9E9E9;
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .question,
+  .faq .answer {
+    padding: 0.694vw 3.472vw 1.389vw 1.389vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq .question,
+  .faq .answer {
+    padding: 10px 50px 20px 20px;
+  }
+}
+
+.proyecto-conservacion {
+  color: #FFFFFF;
+  padding-top: 11.875vw;
+  padding-bottom: 7.986vw;
+  background-size: cover;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  background-image: url(./img/proyectosConservacionBg.jpg);
+}
+
+@media only screen and (min-width: 768px) {
+  .proyecto-conservacion {
+    font-size: 3.621vw;
+    padding-top: 11.875vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .proyecto-conservacion {
+    font-size: 52.14px;
+    padding-top: 171px;
+    padding-bottom: 115px;
+  }
+}
+
+.proyecto-conservacion h3 {
+  font-size: 5.5vw;
+  margin-bottom: 5.208vw;
+  font-family: FreightBigPro-Book;
+}
+
+.proyecto-conservacion h3 span {
+  color: #E92C4E;
+  font-family: FreightBigPro-BoldItalic;
+}
+
+@media only screen and (min-width: 768px) {
+  .proyecto-conservacion h3 {
+    width: 43.056vw;
+    font-size: 3.621vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .proyecto-conservacion h3 {
+    width: 620px;
+    font-size: 52.14px;
+    margin-bottom: 75px;
+  }
+}
+
+.apoyemos {
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .apoyemos {
+    font-size: 2.339vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .apoyemos {
+    font-size: 33.68px;
+    padding-top: 100px;
+  }
+}
+
+.apoyemos h3 {
+  margin-top: 6vw;
+  font-size: 5.5vw;
+  margin-bottom: 4vw;
+  font-family: FreightBigPro-BoldItalic;
+}
+
+@media only screen and (min-width: 768px) {
+  .apoyemos h3 {
+    font-size: 2.339vw;
+    margin-bottom: 3.125vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .apoyemos h3 {
+    font-size: 33.68px;
+    margin-bottom: 45px;
+  }
+}
+
+.apoyemos p {
+  font-family: gtWalsheim-light;
+}
+
+.apoyemos img {
+  width: 50vw;
+  margin-bottom: 10.069vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .apoyemos img {
+    width: auto;
+    margin-top: 3.819vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .apoyemos img {
+    margin-top: 55px;
+    margin-bottom: 145px;
+  }
+}
+
+.apoyemos h2 {
+  margin-bottom: 6.944vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .apoyemos h2 {
+    line-height: 4.524vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .apoyemos h2 {
+    line-height: 65.14px;
+    margin-bottom: 100px;
+  }
+}
+
+.apoyemos h2 span {
+  color: #E92C4E;
+}
+
 .conozca-mas {
   padding-top: 5.347vw;
   padding-bottom: 17.361vw;
   background-repeat: no-repeat;
   background-image: url(img/footer.jpg);
-  background-position: left;
+  background-position: left top;
   background-size: 170%;
 }
 
@@ -772,27 +1070,55 @@ header li {
 
 .conozca-mas a {
   color: #000000;
-  font-size: 13px;
   font-family: gtWalsheim-light;
   text-decoration: none;
 }
 
+.conozca-mas a, .conozca-mas p {
+  font-size: 13px;
+}
+
+.conozca-mas p {
+  line-height: 14px;
+}
+
+.conozca-mas p a {
+  text-decoration: underline;
+}
+
 .conozca-mas ul {
-  margin-top: 5.903vw;
-  margin-left: 5.07vw;
+  margin-top: 4vw;
+  width: 45vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .conozca-mas ul {
+    width: 18.056vw;
+    margin-top: 5.903vw;
+    margin-left: 5.07vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
   .conozca-mas ul {
+    width: 260px;
     margin-top: 85px;
     margin-left: 73px;
   }
 }
 
 .conozca-mas li {
-  margin-bottom: 15px;
+  margin-bottom: 1.432vw;
 }
 
-.conozca-mas li:last-child {
-  margin-top: 30px;
+@media only screen and (min-width: 768px) {
+  .conozca-mas li {
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .conozca-mas li:last-child {
+    margin-top: 30px;
+  }
 }

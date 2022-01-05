@@ -645,7 +645,19 @@ header li {
 }
 
 .calendario {
-  padding-bottom: 150px;
+  padding-bottom: 3.125vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .calendario {
+    padding-bottom: 10.417vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .calendario {
+    padding-bottom: 150px;
+  }
 }
 
 .calendario .svg {
@@ -676,15 +688,43 @@ header li {
   }
 }
 
+.faq .faq-buttons {
+  display: block;
+  margin-bottom: 10vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .faq-buttons {
+    display: flex;
+    margin-bottom: 0;
+  }
+}
+
 .faq .red-line {
   flex-grow: 7;
-  margin-top: 15px;
-  padding-bottom: 10px;
+  margin-top: 2.6vw;
+  padding-bottom: 4.831vw;
   border-top: solid 3px #E92C4E;
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .red-line {
+    margin-top: 1.042vw;
+    padding-bottom: 1.302vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq .red-line {
+    margin-top: 15px;
+    padding-bottom: 10px;
+  }
 }
 
 .faq h4 {
   color: #E92C4E;
+  font-size: 5vw;
+  margin: 0 5vw;
   letter-spacing: 1.597vw;
   font-family: proximaNova-Medium;
 }
@@ -692,7 +732,6 @@ header li {
 @media only screen and (min-width: 768px) {
   .faq h4 {
     font-size: 2.326vw;
-    margin: 0 4.861vw;
     margin-bottom: 10.417vw;
   }
 }
@@ -707,9 +746,15 @@ header li {
 }
 
 .faq h5 {
-  font-size: 3.1vw;
+  font-size: 4vw;
   margin-bottom: 3.1vw;
   font-family: FreightBigPro-BoldItalic;
+}
+
+@media only screen and (min-width: 768px) {
+  .faq h5 {
+    font-size: 3.1vw;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -732,11 +777,26 @@ header li {
 .faq .colorful-paragraphs {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .colorful-paragraphs {
+    justify-content: normal;
+  }
 }
 
 .faq .colorful-paragraphs p {
+  padding: 1.93vw 1.208vw;
   border-radius: 10px;
-  padding: 0 5px;
+  margin-bottom: 4vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .colorful-paragraphs p {
+    padding: 0 5px;
+    margin-bottom: 2vw;
+  }
 }
 
 .faq .colorful-paragraphs p:nth-child(1), .faq .colorful-paragraphs p:nth-child(6) {
@@ -791,12 +851,14 @@ header li {
   }
 }
 
-.faq .colorful-container {
-  width: 46vw;
+@media only screen and (min-width: 768px) {
+  .faq .colorful-container {
+    width: 46vw;
+  }
 }
 
 .faq .dynamic-diagram {
-  width: 54vw;
+  height: 70vw;
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -805,6 +867,8 @@ header li {
 
 @media only screen and (min-width: 768px) {
   .faq .dynamic-diagram {
+    width: 54vw;
+    height: auto;
     min-height: 37.361vw;
   }
 }

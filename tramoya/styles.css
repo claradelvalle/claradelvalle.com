@@ -410,6 +410,7 @@ header li {
 
 .video-container {
   display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   padding: 8.05vw 3.48vw 6.74vw;

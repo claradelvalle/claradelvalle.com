@@ -2,7 +2,6 @@ $(document).on('ready', function() {
 
     $(".outer-slider-container").slick({
         arrows: false,
-        // autoplay: true,
         infinite: true,
         centerMode: true,
         slidesToShow: 1,
@@ -30,6 +29,23 @@ $(document).on('ready', function() {
         infinite: true,
     });
 
+
+    $(".slider-calendario").slick({
+        arrows: false,
+        dots: true,
+        infinite: true,
+        centerMode: true,
+        // slidesToShow: 1,
+        mobileFirst: true,
+        centerPadding: '3.906vw',
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: "unslick"
+            }
+        ]
+    });
+    
     // Dynamic Tramoya Diagrams
     $('#tagFoto2').click(() => {
         $('.dynamic-diagram').css('background-image','url(./img/tramoya02.png)');

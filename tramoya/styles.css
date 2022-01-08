@@ -148,11 +148,10 @@ p {
 }
 
 header {
+  width: 100vw;
   height: 96px;
-  width: 1440px;
   color: #000000;
   display: flex;
-  margin: 0 auto;
   position: fixed;
   align-items: center;
   letter-spacing: 0.2vw;
@@ -161,15 +160,31 @@ header {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
+@media only screen and (min-width: 768px) {
+  header {
+    width: 1440px;
+  }
+}
+
 header .header-logo {
   width: 73px;
   height: 67px;
-  margin-left: 69px;
+  margin-left: 5vw;
+}
+
+@media only screen and (min-width: 768px) {
+  header .header-logo {
+    margin-left: 69px;
+  }
+}
+
+header ul {
+  margin-right: 5vw;
+  justify-content: space-between;
 }
 
 @media only screen and (min-width: 768px) {
   header ul {
-    justify-content: space-between;
     margin-right: 70px;
   }
 }
@@ -649,6 +664,10 @@ header li {
   padding-bottom: 3.125vw;
 }
 
+.calendario > img {
+  display: none;
+}
+
 @media only screen and (min-width: 768px) {
   .calendario {
     padding-bottom: 10.417vw;
@@ -664,6 +683,22 @@ header li {
 .calendario .svg {
   width: 100%;
   height: auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .calendario .slider-calendario {
+    display: none;
+  }
+}
+
+.calendario .slick-dots li button:before {
+  color: #CCCCCC;
+  opacity: 1;
+  font-size: 11vw;
+}
+
+.calendario .slick-dots li.slick-active button:before {
+  color: #EEEEEE;
 }
 
 .faq {

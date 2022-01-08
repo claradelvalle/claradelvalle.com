@@ -664,10 +664,6 @@ header li {
   padding-bottom: 3.125vw;
 }
 
-.calendario > img {
-  display: none;
-}
-
 @media only screen and (min-width: 768px) {
   .calendario {
     padding-bottom: 10.417vw;
@@ -677,6 +673,16 @@ header li {
 @media only screen and (min-width: 1440px) {
   .calendario {
     padding-bottom: 150px;
+  }
+}
+
+.calendario > img {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .calendario > img {
+    display: block;
   }
 }
 

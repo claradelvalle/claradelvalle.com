@@ -112,16 +112,16 @@ h2 {
   font-family: FreightBigPro-Book;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 768px) {
   h2 {
-    font-size: 4.167vw;
+    font-size: 3.472vw;
     margin-bottom: 2.639vw;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   h2 {
-    font-size: 60px;
+    font-size: 50px;
     margin-bottom: 38px;
   }
 }
@@ -286,12 +286,12 @@ p {
 }
 
 .conservacion {
-  padding: 2.78vw 8vw 6.94vw 3.48vw;
+  padding: 2.78vw 25vw 6.94vw 3.48vw;
 }
 
 @media only screen and (min-width: 1440px) {
   .conservacion {
-    padding: 40px 115.2px 100px 50.11px;
+    padding: 40px 360px 100px 50.11px;
   }
 }
 
@@ -304,13 +304,13 @@ p {
 
 @media only screen and (min-width: 768px) {
   .conservacion h1 {
-    font-size: 6.6vw;
+    font-size: 5.208vw;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .conservacion h1 {
-    font-size: 98px;
+    font-size: 75px;
     line-height: 98px;
   }
 }
@@ -982,28 +982,24 @@ p {
   }
 }
 
-.proyecto-conservacion h3 {
-  font-size: 5.5vw;
+.proyecto-conservacion h2 {
   margin-bottom: 5.208vw;
-  font-family: FreightBigPro-Book;
 }
 
-.proyecto-conservacion h3 span {
+.proyecto-conservacion h2 span {
   color: #E92C4E;
   font-family: FreightBigPro-BoldItalic;
 }
 
 @media only screen and (min-width: 768px) {
-  .proyecto-conservacion h3 {
+  .proyecto-conservacion h2 {
     width: 43.056vw;
-    font-size: 3.621vw;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .proyecto-conservacion h3 {
+  .proyecto-conservacion h2 {
     width: 620px;
-    font-size: 52.14px;
     margin-bottom: 75px;
   }
 }
@@ -1050,6 +1046,23 @@ p {
 
 .apoyemos p {
   font-family: gtWalsheim-light;
+}
+
+@media only screen and (min-width: 768px) {
+  .apoyemos p {
+    width: 53.472vw;
+    margin: 0 auto;
+    font-size: 2.083vw;
+    line-height: 2.171vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .apoyemos p {
+    width: 770px;
+    font-size: 30px;
+    line-height: 31.26px;
+  }
 }
 
 .apoyemos img {

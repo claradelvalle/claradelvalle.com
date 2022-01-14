@@ -147,61 +147,6 @@ p {
   }
 }
 
-header {
-  width: 100vw;
-  height: 96px;
-  color: #000000;
-  display: flex;
-  position: fixed;
-  align-items: center;
-  letter-spacing: 0.2vw;
-  background-color: #FFFFFF;
-  justify-content: space-between;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-}
-
-@media only screen and (min-width: 768px) {
-  header {
-    width: 1440px;
-  }
-}
-
-header .header-logo {
-  width: 73px;
-  height: 67px;
-  margin-left: 5vw;
-}
-
-@media only screen and (min-width: 768px) {
-  header .header-logo {
-    margin-left: 69px;
-  }
-}
-
-header ul {
-  margin-right: 5vw;
-  justify-content: space-between;
-}
-
-@media only screen and (min-width: 768px) {
-  header ul {
-    margin-right: 70px;
-  }
-}
-
-header li {
-  float: left;
-  font-size: 12px;
-  padding-right: 20px;
-  font-family: proximaNova-Medium;
-}
-
-@media only screen and (min-width: 1400px) {
-  header {
-    font-size: 14px;
-  }
-}
-
 .hero {
   height: 700px;
   color: #FFFFFF;
@@ -425,7 +370,6 @@ header li {
 
 .video-container {
   display: flex;
-  display: none;
   align-items: center;
   justify-content: center;
   padding: 8.05vw 3.48vw 6.74vw;
@@ -1066,6 +1010,7 @@ header li {
 
 .apoyemos {
   text-align: center;
+  padding-bottom: 2.778vw;
 }
 
 @media only screen and (min-width: 768px) {
@@ -1078,6 +1023,7 @@ header li {
   .apoyemos {
     font-size: 33.68px;
     padding-top: 100px;
+    padding-bottom: 40px;
   }
 }
 
@@ -1129,102 +1075,12 @@ header li {
   margin-bottom: 6.944vw;
 }
 
-@media only screen and (min-width: 768px) {
-  .apoyemos h2 {
-    line-height: 4.524vw;
-  }
-}
-
 @media only screen and (min-width: 1440px) {
   .apoyemos h2 {
-    line-height: 65.14px;
     margin-bottom: 100px;
   }
 }
 
 .apoyemos h2 span {
   color: #E92C4E;
-}
-
-.conozca-mas {
-  padding-top: 5.347vw;
-  padding-bottom: 17.361vw;
-  background-repeat: no-repeat;
-  background-image: url(img/footer.jpg);
-  background-position: left top;
-  background-size: 170%;
-}
-
-@media only screen and (min-width: 768px) {
-  .conozca-mas {
-    background-position: 0;
-    background-size: auto;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .conozca-mas {
-    padding-top: 77px;
-    padding-bottom: 250px;
-  }
-}
-
-.conozca-mas h2 span {
-  color: #E92C4E;
-  font-family: FreightBigPro-BoldItalic;
-}
-
-.conozca-mas a {
-  color: #000000;
-  font-family: gtWalsheim-light;
-  text-decoration: none;
-}
-
-.conozca-mas a, .conozca-mas p {
-  font-size: 13px;
-}
-
-.conozca-mas p {
-  line-height: 14px;
-}
-
-.conozca-mas p a {
-  text-decoration: underline;
-}
-
-.conozca-mas ul {
-  margin-top: 4vw;
-  width: 45vw;
-}
-
-@media only screen and (min-width: 768px) {
-  .conozca-mas ul {
-    width: 18.056vw;
-    margin-top: 5.903vw;
-    margin-left: 5.07vw;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .conozca-mas ul {
-    width: 260px;
-    margin-top: 85px;
-    margin-left: 73px;
-  }
-}
-
-.conozca-mas li {
-  margin-bottom: 1.432vw;
-}
-
-@media only screen and (min-width: 768px) {
-  .conozca-mas li {
-    margin-bottom: 15px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .conozca-mas li:last-child {
-    margin-top: 30px;
-  }
 }

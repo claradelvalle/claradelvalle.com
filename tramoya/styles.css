@@ -875,13 +875,15 @@ p {
 
 .faq .left-column,
 .faq .right-column {
-  width: 40.8vw;
-  max-width: 49.9%;
+  width: 42vw;
+  max-width: 47%;
 }
 
 .faq .question {
+  display: flex;
   transition: 0.2s;
   border-radius: 15px;
+  justify-content: space-between;
   font-family: FreightBigPro-BoldItalic;
   background-position: bottom;
   background-repeat: repeat-x;
@@ -938,15 +940,34 @@ p {
 @media only screen and (min-width: 768px) {
   .faq .question,
   .faq .answer {
-    padding: 0.694vw 3.472vw 1.389vw 1.389vw;
+    padding: 0.694vw 1.389vw 1.389vw 1.389vw;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .faq .question,
   .faq .answer {
-    padding: 10px 50px 20px 20px;
+    padding: 10px 20px 20px 20px;
   }
+}
+
+.faq .arrow {
+  width: 0;
+  height: 0;
+  padding: 5px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+}
+
+.faq .up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.faq .down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
 
 .proyecto-conservacion {

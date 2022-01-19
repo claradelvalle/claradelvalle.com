@@ -231,13 +231,13 @@ p {
 
 @media only screen and (min-width: 768px) {
   .two-columns-container {
-    padding: 5.278vw 54vw 1vw 8.403vw;
+    padding: 5.278vw 33.611vw 1vw 8.403vw;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .two-columns-container {
-    padding: 76px 777.6px 14.4px 121px;
+    padding: 76px 484px 14.4px 121px;
   }
 }
 
@@ -272,33 +272,34 @@ p {
 
 @media only screen and (min-width: 768px) {
   .conservacion {
-    padding: 2.78vw 18.056vw 6.94vw 3.48vw;
+    padding: 2.5vw 18.056vw 6.94vw 8.403vw;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .conservacion {
-    padding: 40px 260px 100px 50.11px;
+    padding: 36px 260px 100px 121px;
   }
 }
 
 .conservacion h1 {
   color: #000000;
-  font-size: 6.2vw;
-  line-height: 6.806vw;
+  font-size: 5.8vw;
+  line-height: 6vw;
   font-family: FreightBigPro-Book;
 }
 
 @media only screen and (min-width: 768px) {
   .conservacion h1 {
-    font-size: 5.208vw;
+    font-size: 4.514vw;
+    line-height: 4.875vw;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .conservacion h1 {
-    font-size: 75px;
-    line-height: 98px;
+    font-size: 65px;
+    line-height: 70.2px;
   }
 }
 
@@ -559,6 +560,7 @@ p {
 }
 
 .fondos .fondos-content .left-column p {
+  color: #961B16;
   font-size: 3.5vw;
   margin-bottom: 0;
   font-family: FreightBigPro-BoldItalic;
@@ -566,15 +568,15 @@ p {
 
 @media only screen and (min-width: 768px) {
   .fondos .fondos-content .left-column p {
-    font-size: 2.5vw;
-    line-height: 2.5vw;
+    font-size: 2.083vw;
+    line-height: 2.25vw;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .fondos .fondos-content .left-column p {
-    font-size: 37px;
-    line-height: 37px;
+    font-size: 30px;
+    line-height: 32.4px;
   }
 }
 

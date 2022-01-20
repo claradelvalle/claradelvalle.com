@@ -892,8 +892,9 @@ p {
 
 @media only screen and (min-width: 768px) {
   .faq .question {
-    margin-bottom: 3.125vw;
     font-size: 1.492vw;
+    line-height: 1.611vw;
+    margin-bottom: 3.125vw;
   }
   .faq .question:hover {
     cursor: pointer;
@@ -902,8 +903,9 @@ p {
 
 @media only screen and (min-width: 1440px) {
   .faq .question {
-    margin-bottom: 45px;
     font-size: 21.48px;
+    margin-bottom: 45px;
+    line-height: 23.1984px;
   }
 }
 
@@ -948,6 +950,22 @@ p {
   .faq .question,
   .faq .answer {
     padding: 10px 20px 20px 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .question p,
+  .faq .answer p {
+    font-size: 0.833vw;
+    line-height: 0.903vw;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq .question p,
+  .faq .answer p {
+    font-size: 12px;
+    line-height: 13px;
   }
 }
 

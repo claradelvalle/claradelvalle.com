@@ -78,7 +78,7 @@ $(document).on('ready', function() {
         $.each(faqs.questions, function(key, item) {
             if(key%2 == 0){
                 leftColumnInnerHTML += '<div class="question">' + item.question + '<i class="arrow up"></i></div>';
-                leftColumnInnerHTML += '<div class="answer"><p>' + item.answer + '</p></div>';
+                leftColumnInnerHTML += '<div class="answer">' + item.answer + '</div>';
             }
             else {
                 rightColumnInnerHTML += '<div class="question">' + item.question + '<i class="arrow up"></i></div>';

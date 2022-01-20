@@ -650,11 +650,6 @@ p {
   padding-right: 3.48vw;
 }
 
-.faq .columns-container {
-  display: flex;
-  flex-direction: row;
-}
-
 @media only screen and (min-width: 768px) {
   .faq {
     padding-right: 3.48vw;
@@ -666,6 +661,13 @@ p {
   .faq {
     padding-right: 50.1px;
     padding-bottom: 95px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .faq .columns-container {
+    display: flex;
+    flex-direction: row;
   }
 }
 
@@ -873,10 +875,12 @@ p {
   }
 }
 
-.faq .left-column,
-.faq .right-column {
-  width: 42vw;
-  max-width: 47%;
+@media only screen and (min-width: 768px) {
+  .faq .left-column,
+  .faq .right-column {
+    width: 42vw;
+    max-width: 47%;
+  }
 }
 
 .faq .question {
@@ -884,9 +888,9 @@ p {
   transition: 0.2s;
   border-radius: 15px;
   justify-content: space-between;
-  font-family: FreightBigPro-BoldItalic;
   background-position: bottom;
   background-repeat: repeat-x;
+  font-family: FreightBigPro-BoldItalic;
   background-image: url(./img/questionBg.png);
 }
 
@@ -894,7 +898,6 @@ p {
   .faq .question {
     font-size: 1.492vw;
     line-height: 1.611vw;
-    margin-bottom: 3.125vw;
   }
   .faq .question:hover {
     cursor: pointer;
@@ -909,7 +912,7 @@ p {
   }
 }
 
-.faq .active {
+.faq .question.active {
   margin-bottom: 0;
   border-radius: 15px 15px 0 0;
   background-image: none;
@@ -922,26 +925,17 @@ p {
   background-color: #E9E9E9;
 }
 
-@media only screen and (min-width: 768px) {
-  .faq .answer {
-    margin-bottom: 3.125vw;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .faq .answer {
-    margin-bottom: 45px;
-  }
-}
-
 .faq .question,
 .faq .answer {
+  margin-bottom: 5vw;
+  padding: 3vw 2vw 5vw;
   border: 1px solid #E9E9E9;
 }
 
 @media only screen and (min-width: 768px) {
   .faq .question,
   .faq .answer {
+    margin-bottom: 3.125vw;
     padding: 0.694vw 1.389vw 1.389vw 1.389vw;
   }
 }
@@ -949,6 +943,7 @@ p {
 @media only screen and (min-width: 1440px) {
   .faq .question,
   .faq .answer {
+    margin-bottom: 45px;
     padding: 10px 20px 20px 20px;
   }
 }

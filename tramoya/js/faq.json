@@ -2,55 +2,55 @@
 	"questions": [
 		{
 			"question": "¿Qué es una tramoya?",
-			"answer": "La tramoya es el conjunto de accesorios que existen en la caja escénica del teatro"
+			"answer": "<p>La tramoya es el conjunto de accesorios que existen en la caja escénica del teatro</p>"
 		},
 		{
 			"question": "¿En qué año se instaló La Tramoya del Teatro Nacional?",
-			"answer": "El Teatro Nacional inició operando desde su inauguración con un sistema muy vernáculo de origen francés, conocido como el “manteau d'arlequín” que coloquialmente se le conociá como los arlequines. En la década de los años veinte del siglo pasado, se comenzó a utilizar telones colgantes de la tramoya a través de mecates y poleas, suspendidos en una parrilla de madera que ha funcionado en todos estos cien años."
+			"answer": "<p>El Teatro Nacional inició operando desde su inauguración con un sistema muy vernáculo de origen francés, conocido como el “manteau d'arlequín” que coloquialmente se le conociá como los arlequines.</p><p>En la década de los años veinte del siglo pasado, se comenzó a utilizar telones colgantes de la tramoya a través de mecates y poleas, suspendidos en una parrilla de madera que ha funcionado en todos estos cien años.</p>"
 		},
 		{
 			"question": "¿Qué hace un tramoyista?",
-			"answer": "Es el encargado de realizar las preparaciones del escenario antes de cualquier presentación, su trabajo incluye diseñar, montar y manejar las escenografías del teatro. Los tramoyistas preparan el escenario para una presentación, montando telones, decorados, muebles, utilería y escenografías antes de las actuaciones. También cambian cosas entre las escenas y durante el intermedio. Al final de las temporadas desmontan las escenografías, para preparar el siguiente espectáculo. Un tramoyista tiene que tener buena forma física debido a que este trabajo implica levantar peso, agacharse, subir escaleras, ser capaz de resolver problemas rápidamente, debe ser paciente, tener habilidades manuales y trabajar en equipo"
+			"answer": "<p>Es el encargado de realizar las preparaciones del escenario antes de cualquier presentación, su trabajo incluye diseñar, montar y manejar las escenografías del teatro. Los tramoyistas preparan el escenario para una presentación, montando telones, decorados, muebles, utilería y escenografías antes de las actuaciones. También cambian cosas entre las escenas y durante el intermedio.</p><p>Al final de las temporadas desmontan las escenografías, para preparar el siguiente espectáculo. Un tramoyista tiene que tener buena forma física debido a que este trabajo implica levantar peso, agacharse, subir escaleras, ser capaz de resolver problemas rápidamente, debe ser paciente, tener habilidades manuales y trabajar en equipo</p>"
 		},
 		{
 			"question": "¿Cuántos tramoyistas tiene el Teatro Nacional?",
-			"answer": "El Teatro cuenta con 5 tramoyistas, un encargado y 4 asistentes."
+			"answer": "<p>El Teatro cuenta con 5 tramoyistas, un encargado y 4 asistentes.</p>"
 		},
 		{
 			"question": "¿Cómo se monta un escenario utilizando La Tramoya?",
-			"answer": "Para los diferentes montajes en el Teatro se utiliza la parrilla (que es la parte superior de la caja escénica que soporta tanto los telones como equipos de iluminación que van perpendiculares a la boca del escenario). Antes de cada espectáculo los tramoyistas se reúnen con el diseñador de escenografía y se decide las alturas, niveles y posiciones donde están los decorados o telones que se necesitan para el espectáculo utilizando planos de escenografía. Los tramoyistas suben al telar y se empieza con el montaje de la obra. El montaje de espectåculos en muchas ocasiones se realiza 2 días antes de los ensayos."
+			"answer": "<p>Para los diferentes montajes en el Teatro se utiliza la parrilla (que es la parte superior de la caja escénica que soporta tanto los telones como equipos de iluminación que van perpendiculares a la boca del escenario).</p><p>Antes de cada espectáculo los tramoyistas se reúnen con el diseñador de escenografía y se decide las alturas, niveles y posiciones donde están los decorados o telones que se necesitan para el espectáculo utilizando planos de escenografía. Los tramoyistas suben al telar y se empieza con el montaje de la obra. El montaje de espectåculos en muchas ocasiones se realiza 2 días antes de los ensayos.</p>"
 		},
 		{
-			"question" : "¿Por qué es necesario construir una tramoya metálica?",
-			"answer": "El proyecto que se construye es una estructura metálica independiente que soportará los principales pesos que actualmente cuelgan de la antigua parrilla de madera. Estos elementos colgantes actuales, son las barras de luces que anteriormente no existían, plafones acústicos que antes habían sido sustituidos por telas que ejercían una función acústica. Actualmente con el avance tecnológico cada día surgen nuevos espectáculos más tecnificados que demandan no solo una tramoya equipada, sino además, vienen a incrementar las cargas adicionales que se suspenden de la tramoya de madera, diseñada para soportar solamente telas y su propia carga muerta."
+			"question" : "¿Por qué es necesario construir esta estructura metálica?",
+			"answer": "<p>El proyecto que se construye es una estructura metálica independiente que soportará los principales pesos que actualmente cuelgan de la antigua parrilla de madera. Estos elementos colgantes actuales, son las barras de luces que anteriormente no existían, plafones acústicos que antes habían sido sustituidos por telas que ejercían una función acústica.</p><p>Actualmente con el avance tecnológico cada día surgen nuevos espectáculos más tecnificados que demandan no solo una tramoya equipada, sino además, vienen a incrementar las cargas adicionales que se suspenden de la tramoya de madera, diseñada para soportar solamente telas y su propia carga muerta.</p>"
 		},
 		{
 			"question" : "¿Cómo se afecta o en qué cambia la Tramoya actual con este proyecto?",
-			"answer": "La materialidad histórica del edificio y de la tramoya original no se toca ni se destruye. Esta estructura será una especie de exoesqueleto interno, estructuralmente independiente, que soportará una concha acústica, barras de luces con mayor capacidad y además las tuberías del sistema contra incendios y los telones cortafuegos."
+			"answer": "<p>La materialidad histórica del edificio y de la tramoya original no se toca ni se destruye. Esta estructura será una especie de exoesqueleto interno, estructuralmente independiente, que soportará una concha acústica, barras de luces con mayor capacidad y además las tuberías del sistema contra incendios y los telones cortafuegos.</p>"
 		},
 		{
-			"question" : "¿En cuánto tiempo se completará el Proyecto de Conservación de la Tramoya?",
-			"answer": "Este proyecto solo proveerá de momento la estructura metálica para soportar toda la mecánica teatral, que luego se colocará en una segunda fase de este gran proyecto. Pero de momento, servirá de alivio para relevar de esfuerzo algunas cargas que urgen reubicarse, como las barras de luces y los plafones acústicos."
+			"question" : "¿En cuánto tiempo se completará el proceso de construcción de la nueva estructura metálica?",
+			"answer": "<p>Este proyecto solo proveerá de momento la estructura metálica para soportar toda la mecánica teatral, que luego se colocará en una segunda fase de este gran proyecto. Pero de momento, servirá de alivio para relevar de esfuerzo algunas cargas que urgen reubicarse, como las barras de luces y los plafones acústicos.</p>"
 		},
 		{
 			"question" : "¿Cíál será el costo total del proyecto?",
-			"answer": "Una inversión total de $487.535,69 (cuatrocientos ochenta y siete mil quinientos treinta y cinco dólares, con 69/100)"
-		},
-		{
-			"question" : "¿De dónde proviene el dinero para financiar la construcción de la Tramoya metálica?",
-			"answer": "Este dinero proviene de fondos propios del Teatro Nacional por lo recaudado del Impuesto sobre los Espectáculos Públicos durante varios años."
+			"answer": "<p>Una inversión total de $487.535,69 (cuatrocientos ochenta y siete mil quinientos treinta y cinco dólares, con 69/100)</p>"
 		},
 		{
 			"question" : "¿Cuál sería el riesgo si este proyecto se posterga?",
-			"answer": "La tramoya actual no cuenta con la capacidad para seguir soportando las barras de luces y telones, por lo tanto esta estructura debe ser descargada, de no ser así tanto los artistas como el personal podrían correr peligro."
+			"answer": "<p>La tramoya actual no cuenta con la capacidad para seguir soportando las barras de luces y telones, por lo tanto esta estructura debe ser descargada, de no ser así tanto los artistas como el personal podrían correr peligro.</p>"
 		},
 		{
-			"question" : "¿Estará cerrado el Teatro Nacional mientras se construye la Tramoya metálica?",
-			"answer": "Tanto la programación artística del Teatro como el Café y las visitas turísticas se mantendrán abiertas a los públicos durante el proceso de construcción, y se invita a las personas a acercarse para presenciar este momento histórico que vive el patrimonio y sector cultural nacional y ser parte de una sociedad que cuida su historia."
+			"question" : "¿De dónde proviene el dinero para financiar la construcción de la nueva estructura metálica?",
+			"answer": "<p>Este dinero proviene de fondos propios del Teatro Nacional por lo recaudado del Impuesto sobre los Espectáculos Públicos durante varios años.</p>"
 		},
 		{
 			"question" : "¿Dónde puedo solicitar más información sobre La Tramoya y su conservación?",
-			"answer": "En este sitio web continuaremos actualizando los procesos, además nuestras redes sociales informan diariamente de todos los procesos de conservación que se realizan en la institución."
+			"answer": "<p>En este sitio web continuaremos actualizando los procesos, además nuestras redes sociales informan diariamente de todos los procesos de conservación que se realizan en la institución.</p>"
+		},
+		{
+			"question" : "¿Estará cerrado el Teatro Nacional mientras se trabaja en la construcción de la estructura metálica?",
+			"answer": "<p>Tanto la programación artística del Teatro como el Café y las visitas turísticas se mantendrán abiertas a los públicos durante el proceso de construcción, y se invita a las personas a acercarse para presenciar este momento histórico que vive el patrimonio y sector cultural nacional y ser parte de una sociedad que cuida su historia.</p>"
 		}
 	]
 }
